@@ -33,6 +33,9 @@ Geek's blog!
     - 4.1.文章分类
        - 分类不可自定义，应该由管理员指定。
 
+## 数据库
+![](/home/cuppar/project/geeklog/management-docs/需求/ER图.png)
+
 ## 分工
 - 前端组：佘玉非（负责人）、何志颖、
 - 后端组：潘浩然（负责人）、朱远飞、午康俊（少量）、
