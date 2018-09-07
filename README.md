@@ -34,7 +34,7 @@ Geek's blog!
        - 分类不可自定义，应该由管理员指定。
 
 ## 数据库
-![](/home/cuppar/project/geeklog/management-docs/需求/ER图.png)
+![ER图](./management-docs/需求/ER图.png)
 
 ## 分工
 - 前端组：佘玉非（负责人）、何志颖、
