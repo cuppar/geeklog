@@ -1,0 +1,31 @@
+[Info  - 下午3:56:15] Using tsserver from: /usr/share/code/resources/app/extensions/node_modules/typescript/lib
+[Info  - 下午3:56:15] Forking TSServer
+PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin 
+[Info  - 下午3:56:15] Started TSServer
+[Error  - 下午3:56:18] 'getApplicableRefactors' request failed with error.
+Error processing request. No Project.
+Error: No Project.
+    at Object.ThrowNoProject (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:114027:23)
+    at ScriptInfo.getDefaultProject (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:114605:46)
+    at ProjectService.doEnsureDefaultProjectForFile (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:116286:48)
+    at ProjectService.ensureDefaultProjectForFile (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:116281:75)
+    at IOSession.Session.getFileAndProjectWorker (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:118857:87)
+    at IOSession.Session.getFileAndProject (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:118842:29)
+    at IOSession.Session.getApplicableRefactors (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:119282:31)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:118231:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:119496:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:119487:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:119496:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:119516:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:120770:27)
+    at emitOne (events.js:116:13)
+    at Interface.emit (events.js:211:7)
+    at Interface._onLine (readline.js:282:10)
+    at Interface._normalWrite (readline.js:424:12)
+    at Socket.ondata (readline.js:141:10)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:594:20)

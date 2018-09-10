@@ -1,0 +1,7 @@
+[Info  - 下午6:09:32] ESLint server running in node v8.9.3
+[Info  - 下午6:09:32] ESLint server is running.
+[Info  - 下午6:09:33] ESLint library loaded from: /home/cuppar/project/geeklog/geeklog-manage-page/node_modules/eslint/lib/api.js
+[Warn  - 下午6:09:33] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/ManageListItems/ManageListItems.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.

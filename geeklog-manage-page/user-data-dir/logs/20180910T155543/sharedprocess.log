@@ -1,0 +1,65 @@
+[2018-09-10 15:55:46.955] [sharedprocess] [info] main {"machineId":"8de8ef8d8df6b5d84157009cffa231a11ced922311f00f9db4895ac1dc2aa12c"}
+[2018-09-10 15:55:47.065] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:47.108] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:47.132] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:47.134] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:55:47.138] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:55:47.141] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:55:47.143] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:48.244] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:48.264] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:48.335] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:54.027] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:54.053] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:54.075] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:54.094] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:54.097] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:55:54.099] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:55:54.104] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:55:54.108] [sharedprocess] [info] Installing extension: vscode-language-pack-zh-hans
+[2018-09-10 15:55:54.114] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-10 15:55:55.666] [sharedprocess] [info] Downloaded extension: vscode-language-pack-zh-hans /tmp/61635e81-980a-4b73-b4fc-23d856c1a472
+[2018-09-10 15:55:59.936] [sharedprocess] [info] main {"machineId":"8de8ef8d8df6b5d84157009cffa231a11ced922311f00f9db4895ac1dc2aa12c"}
+[2018-09-10 15:56:00.052] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 15:56:00.080] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 15:56:00.106] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 15:56:00.107] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:56:00.116] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:56:00.121] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:56:00.124] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 15:56:00.130] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 15:56:00.135] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 15:56:01.175] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 15:56:39.939] [sharedprocess] [info] Starting to clean up unused language packs.
+[2018-09-10 15:56:39.940] [sharedprocess] [info] Skipping directory b6b7c010113252587ff1d02a94187a87.zh-cn. Language pack still in use.
+[2018-09-10 16:01:01.248] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:06:01.259] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:11:01.270] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:16:01.293] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:21:01.305] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:26:01.315] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:31:01.327] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:36:01.341] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:36:17.785] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:36:17.819] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:36:17.847] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:36:17.879] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:36:17.884] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 16:36:17.887] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 16:36:17.900] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-10 16:41:01.356] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:46:01.403] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:51:01.424] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 16:56:01.761] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:01:01.819] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:06:01.831] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:11:01.843] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:16:01.857] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:21:01.868] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:26:01.885] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:31:01.907] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:44:20.385] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:49:20.401] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:54:20.416] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 17:59:21.106] [sharedprocess] [info] Scanned user extensions: 6
+[2018-09-10 18:04:21.123] [sharedprocess] [info] Scanned user extensions: 6

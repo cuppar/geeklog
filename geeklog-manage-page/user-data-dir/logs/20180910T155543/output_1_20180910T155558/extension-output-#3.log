@@ -1,0 +1,32 @@
+[Info  - 下午3:56:15] ESLint server running in node v8.9.3
+[Info  - 下午3:56:15] ESLint server is running.
+[Info  - 下午3:56:16] ESLint library loaded from: /home/cuppar/project/geeklog/geeklog-manage-page/node_modules/eslint/lib/api.js
+[Warn  - 下午3:56:16] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/App.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.
+[Warn  - 下午3:58:28] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/App.test.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.
+[Warn  - 下午3:59:57] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/ManagerHome/ManagerHome.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.
+[Info  - 下午4:09:29] ESLint library loaded from: /home/cuppar/learn/material-ui/node_modules/eslint/lib/api.js
+[Warn  - 下午4:18:35] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/ManageHome/ManagerHome.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.
+[Warn  - 下午4:18:41] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/ManageHome/ManageHome.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.
+[Warn  - 下午4:20:53] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/ManageListItems/ManageListItems.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.
+[Warn  - 下午4:41:05] 
+No ESLint configuration (e.g .eslintrc) found for file: /home/cuppar/project/geeklog/geeklog-manage-page/src/index.js
+File will not be validated. Consider running 'eslint --init' in the workspace folder geeklog-manage-page
+Alternatively you can disable ESLint by executing the 'Disable ESLint' command.

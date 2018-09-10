@@ -1,0 +1,95 @@
+[2018-09-10 15:55:45.357] [renderer1] [info] no standard startup: not just one text editor
+[2018-09-10 15:55:58.494] [renderer1] [info] no standard startup: not just one text editor
+[2018-09-10 15:58:34.138] [renderer1] [info] No grammar found for scope text.html.javadoc
+[2018-09-10 16:02:47.828] [renderer1] [info] No grammar found for scope source.scala
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.dart
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.postscript
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.c++
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.js.jquery
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope text.html.javadoc
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.sass
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.less
+[2018-09-10 16:02:47.845] [renderer1] [info] No grammar found for scope source.stylus
+[2018-09-10 16:02:47.848] [renderer1] [info] No grammar found for scope source.applescript
+[2018-09-10 16:02:47.848] [renderer1] [info] No grammar found for scope text.html.textile
+[2018-09-10 16:17:17.281] [renderer1] [error] cannot open file:///home/cuppar/project/geeklog/geeklog-manage-page/src/ManageHome. Detail: 文件是目录: Error: cannot open file:///home/cuppar/project/geeklog/geeklog-manage-page/src/ManageHome. Detail: 文件是目录
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:4236:621
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:302)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._chainedError (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:261)
+    at n (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:40)
+    at n.Class.define.cancel.then (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:157:736)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:109)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._setCompleteValue (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:596)
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:284)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._chainedError (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:261)
+    at n (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:40)
+    at n.Class.define.cancel.then (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:157:736)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:109)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._setCompleteValue (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:596)
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:284)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._chainedError (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:261)
+    at n (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:40)
+    at n.Class.define.cancel.then (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:157:736)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:109)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._setCompleteValue (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:596)
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:284)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._chainedError (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:261)
+    at n (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:40)
+    at n.Class.define.cancel.then (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:157:736)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:109)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._setCompleteValue (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:596)
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:284)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._chainedError (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:261)
+    at n (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:40)
+    at n.Class.define.cancel.then (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:157:736)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:109)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._setCompleteValue (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:596)
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:284)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._oncancel._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._oncancel._error (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:419)
+    at l (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:159:962)
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:160:70
+    at Object.v [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:152:302)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:568)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._chainedError (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:261)
+    at n (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:40)
+    at n.Class.define.cancel.then (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:157:736)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:154:109)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._setCompleteValue (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:596)
+    at Object.g [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:151:709)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:61)
+    at n.Class.derive._creator._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._creator._completed (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:343)
+    at Object.g [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:151:729)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:155:61)
+    at n.Class.derive._oncancel._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:902)
+    at n.Class.derive._oncancel._completed (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:156:343)
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:3262:478
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:3263:355
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:274:992
+    at Function.<anonymous> (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:3263:113)
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:274:599
+    at s (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:274:130)
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:274:234
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+[2018-09-10 16:19:29.596] [renderer1] [error] Inotify limit reached (ENOSPC)
+[2018-09-10 17:21:13.282] [renderer1] [error] Failed to watch /home/cuppar/learn/material-ui/src/MangerPage/Dashboard.js for changes (Error: watch /home/cuppar/learn/material-ui/src/MangerPage/Dashboard.js ENOSPC)
