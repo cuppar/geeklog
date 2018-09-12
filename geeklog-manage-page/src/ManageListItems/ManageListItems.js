@@ -63,10 +63,7 @@ class ManageListItems extends Component {
         {/* welcome list item */}
         <Link
           className={classes.link}
-          to={{
-            pathname: '/welcome',
-            state: { login: this.props.login }
-          }}>
+          to="/welcome">
           <ListItem
             selected={this.state.selectedIndex === 0}
             onClick={e => this.handleListItemClick(e, 0)}

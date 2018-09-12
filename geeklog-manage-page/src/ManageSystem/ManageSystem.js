@@ -121,6 +121,9 @@ class ManageSystem extends Component {
     drawerOpen: true,
     login: false,
     loginDialogOpen: false,
+    username: null,
+    token: null, // logined user token 
+    loginMessage: '请先登录，才能使用相关博客系统管理功能。', // login tips message (ok, fail, username or password err etc.)
   }
 
   handleDrawerOpen = () => {
@@ -147,7 +150,28 @@ class ManageSystem extends Component {
     });
   }
 
+  handleLogin = (username, token) => {
+    this.setState({
+      login: true,
+      username: username,
+      token: token,
+    });
+  };
 
+  handleLogout = () => {
+    this.setState({
+      login: false,
+      username: null,
+      token: null,
+      loginMessage: '请先登录，才能使用相关博客系统管理功能。', // login tips message (ok, fail, username or password err etc.)
+    });
+  };
+
+  handleLoginMessage = msg => {
+    this.setState({
+      loginMessage: msg,
+    });
+  }
 
   render() {
     const { classes } = this.props;
@@ -208,6 +232,7 @@ class ManageSystem extends Component {
                 </Button>
                 <Button
                   color="inherit"
+                  onClick={this.handleLogout}
                   className={classNames({
                     [classes.logoutButton]: true,
                     [classes.hidden]: !this.state.login,
@@ -220,11 +245,10 @@ class ManageSystem extends Component {
 
             {/* login dialog */}
             <LoginDialog
-              // styles={{
-              //   zIndex: 999999,
-              // }}
+              onLogin={this.handleLogin}
               open={this.state.loginDialogOpen}
               onLoginDialogClose={this.handleLoginDialogClose}
+              onLoginMessage={this.handleLoginMessage}
             />
 
             {/* left opened menu */}
@@ -257,6 +281,8 @@ class ManageSystem extends Component {
               <div className={classes.appBarSpacer} />
               <PanelContainer
                 login={this.state.login}
+                username={this.state.username}
+                loginMessage={this.state.loginMessage}
               />
             </main>
           </MuiThemeProvider>

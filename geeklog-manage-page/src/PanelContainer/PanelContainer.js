@@ -18,9 +18,12 @@ const styles = theme => ({
 
 });
 
-class ContentPanel extends Component {
+class PanelContainer extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    login: PropTypes.bool.isRequired,
+    username: PropTypes.string,
+    loginMessage: PropTypes.string,
   }
 
   render() {
@@ -29,12 +32,26 @@ class ContentPanel extends Component {
     return (
       !this.props.login ?
         <Switch>
-          <Route path="/welcome" component={WelcomeManagePanel}></Route>
+          <Route 
+          path="/welcome" 
+          render={props=>(
+            <WelcomeManagePanel 
+            username={this.props.username}
+            loginMessage={this.props.loginMessage}
+            login={this.props.login} />
+          )}></Route>
           <Redirect to="/welcome"></Redirect>
         </Switch>
         :
         <Switch>
-          <Route path="/welcome" component={WelcomeManagePanel}></Route>
+          <Route 
+          path="/welcome" 
+          render={props=>(
+            <WelcomeManagePanel 
+            username={this.props.username}
+            loginMessage={this.props.loginMessage}
+            login={this.props.login} />
+          )}></Route>
           <Route path="/user-manage" component={UserManagePanel}></Route>
           <Route path="/category-manage/add" component={AddCategoryManagePanel}></Route>
           <Route path="/category-manage/modify" component={ModifyCategoryManagePanel}></Route>
@@ -46,4 +63,4 @@ class ContentPanel extends Component {
   }
 }
 
-export default withStyles(styles)(ContentPanel);
+export default withStyles(styles)(PanelContainer);
