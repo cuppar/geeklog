@@ -1,8 +1,9 @@
 # ManageHome
 - ManageListItems
 - ContentPanel
-  - ManageHomePanel
+  - WelcomeManagePanel
   - UserManagePanel
+    - UserListItem
   - CagegoryManagePanel
   - ContentManagePanel
-
+  - Pagination

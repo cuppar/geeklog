@@ -24,42 +24,53 @@ class PanelContainer extends Component {
     login: PropTypes.bool.isRequired,
     username: PropTypes.string,
     loginMessage: PropTypes.string,
+    token: PropTypes.string.isRequired,
   }
 
   render() {
+    let container;
 
-
-    return (
-      !this.props.login ?
+    if (!this.props.login) {
+      container = (
         <Switch>
-          <Route 
-          path="/welcome" 
-          render={props=>(
-            <WelcomeManagePanel 
-            username={this.props.username}
-            loginMessage={this.props.loginMessage}
-            login={this.props.login} />
-          )}></Route>
+          <Route
+            path="/welcome"
+            render={props => (
+              <WelcomeManagePanel
+                username={this.props.username}
+                loginMessage={this.props.loginMessage}
+                login={this.props.login} />
+            )}></Route>
           <Redirect to="/welcome"></Redirect>
         </Switch>
-        :
+      );
+    } else {
+      container = (
         <Switch>
-          <Route 
-          path="/welcome" 
-          render={props=>(
-            <WelcomeManagePanel 
-            username={this.props.username}
-            loginMessage={this.props.loginMessage}
-            login={this.props.login} />
-          )}></Route>
-          <Route path="/user-manage" component={UserManagePanel}></Route>
+          <Route
+            path="/welcome"
+            render={props => (
+              <WelcomeManagePanel
+                username={this.props.username}
+                loginMessage={this.props.loginMessage}
+                login={this.props.login} />
+            )}></Route>
+          <Route path="/user-manage"
+            render={props => (
+              <UserManagePanel
+                token={this.props.token}/>
+            )}></Route>
           <Route path="/category-manage/add" component={AddCategoryManagePanel}></Route>
           <Route path="/category-manage/modify" component={ModifyCategoryManagePanel}></Route>
           <Route path="/category-manage/delete" component={DeleteCategoryManagePanel}></Route>
           <Route path="/article-manage" component={ArticleManagePanel}></Route>
           <Redirect from="*" to="/welcome"></Redirect>
         </Switch>
-    )
+      );
+    }
+
+
+    return container;
   }
 }
 

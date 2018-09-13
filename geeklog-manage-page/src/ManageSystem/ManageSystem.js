@@ -23,18 +23,6 @@ const propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-// App's main theme
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#3949ab",
-    },
-    secondary: {
-      main: "#FE6B8B",
-    }
-  }
-});
-
 // css
 const styles = theme => ({
   root: {
@@ -122,7 +110,7 @@ class ManageSystem extends Component {
     login: false,
     loginDialogOpen: false,
     username: null,
-    token: null, // logined user token 
+    token: '', // logined user token 
     loginMessage: '请先登录，才能使用相关博客系统管理功能。', // login tips message (ok, fail, username or password err etc.)
   }
 
@@ -162,7 +150,7 @@ class ManageSystem extends Component {
     this.setState({
       login: false,
       username: null,
-      token: null,
+      token: '',
       loginMessage: '请先登录，才能使用相关博客系统管理功能。', // login tips message (ok, fail, username or password err etc.)
     });
   };
@@ -180,112 +168,110 @@ class ManageSystem extends Component {
       <React.Fragment>
         <CssBaseline />
         <div className={classes.root}>
-          {/* main theme */}
-          <MuiThemeProvider theme={theme}>
 
-            {/* header bar */}
-            <AppBar
-              position="absolute"
-              className={classNames(
-                classes.appBar,
-                this.state.drawerOpen && classes.appBarShift
-              )}
+          {/* header bar */}
+          <AppBar
+            position="absolute"
+            className={classNames(
+              classes.appBar,
+              this.state.drawerOpen && classes.appBarShift
+            )}
+          >
+            <Toolbar
+              disableGutters={!this.state.drawerOpen}
+              className={classes.toolbar}
             >
-              <Toolbar
-                disableGutters={!this.state.drawerOpen}
-                className={classes.toolbar}
+
+              {/* menu icon button */}
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.handleDrawerOpen}
+                className={classNames(
+                  classes.menuButton,
+                  this.state.drawerOpen && classes.hidden
+                )}
               >
+                <Menu />
+              </IconButton>
 
-                {/* menu icon button */}
-                <IconButton
-                  color="inherit"
-                  aria-label="Open drawer"
-                  onClick={this.handleDrawerOpen}
-                  className={classNames(
-                    classes.menuButton,
-                    this.state.drawerOpen && classes.hidden
-                  )}
-                >
-                  <Menu />
-                </IconButton>
-
-                {/* title */}
-                <Typography
-                  variant="title"
-                  color="inherit"
-                  noWrap
-                  className={classes.grow}
-                >
-                  Geeklog 管理系统
+              {/* title */}
+              <Typography
+                variant="title"
+                color="inherit"
+                noWrap
+                className={classes.grow}
+              >
+                Geeklog 管理系统
                 </Typography>
 
-                {/* login / logout button */}
-                <Button
-                  color="inherit"
-                  onClick={this.handleLoginDialogOpen}
-                  className={classNames({
-                    [classes.loginButton]: true,
-                    [classes.hidden]: this.state.login,
-                  })}
-                >
-                  登录
+              {/* login / logout button */}
+              <Button
+                color="inherit"
+                onClick={this.handleLoginDialogOpen}
+                className={classNames({
+                  [classes.loginButton]: true,
+                  [classes.hidden]: this.state.login,
+                })}
+              >
+                登录
                 </Button>
-                <Button
-                  color="inherit"
-                  onClick={this.handleLogout}
-                  className={classNames({
-                    [classes.logoutButton]: true,
-                    [classes.hidden]: !this.state.login,
-                  })}
-                >
-                  注销
+              <Button
+                color="inherit"
+                onClick={this.handleLogout}
+                className={classNames({
+                  [classes.logoutButton]: true,
+                  [classes.hidden]: !this.state.login,
+                })}
+              >
+                注销
                 </Button>
-              </Toolbar>
-            </AppBar>
+            </Toolbar>
+          </AppBar>
 
-            {/* login dialog */}
-            <LoginDialog
-              onLogin={this.handleLogin}
-              open={this.state.loginDialogOpen}
-              onLoginDialogClose={this.handleLoginDialogClose}
-              onLoginMessage={this.handleLoginMessage}
-            />
+          {/* login dialog */}
+          <LoginDialog
+            onLogin={this.handleLogin}
+            open={this.state.loginDialogOpen}
+            onLoginDialogClose={this.handleLoginDialogClose}
+            onLoginMessage={this.handleLoginMessage}
+          />
 
-            {/* left opened menu */}
-            <Drawer
-              variant="permanent"
-              classes={{
-                paper: classNames(
-                  classes.drawerPaper,
-                  !this.state.drawerOpen && classes.drawerPaperClose
-                )
-              }}
-              open={this.state.drawerOpen}
-            >
-              <div className={classes.toolbarIcon}>
-                <IconButton
-                  onClick={this.handleDrawerClose}
-                >
-                  <ChevronLeft />
-                </IconButton>
-              </div>
-              <List>
-                <ManageListItems
-                  login={this.state.login}
-                />
-              </List>
-            </Drawer>
-
-            {/* right main panel */}
-            <main className={classes.content}>
-              <div className={classes.appBarSpacer} />
-              <PanelContainer
+          {/* left opened menu */}
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: classNames(
+                classes.drawerPaper,
+                !this.state.drawerOpen && classes.drawerPaperClose
+              )
+            }}
+            open={this.state.drawerOpen}
+          >
+            <div className={classes.toolbarIcon}>
+              <IconButton
+                onClick={this.handleDrawerClose}
+              >
+                <ChevronLeft />
+              </IconButton>
+            </div>
+            <List>
+              <ManageListItems
                 login={this.state.login}
-                username={this.state.username}
-                loginMessage={this.state.loginMessage}
               />
-            </main>
-          </MuiThemeProvider>
+            </List>
+          </Drawer>
+
+          {/* right main panel */}
+          <main className={classes.content}>
+            <div className={classes.appBarSpacer} />
+            <PanelContainer
+              login={this.state.login}
+              username={this.state.username}
+              loginMessage={this.state.loginMessage}
+              token={this.state.token}
+            />
+          </main>
         </div>
       </React.Fragment>
     );

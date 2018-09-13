@@ -7,6 +7,8 @@ import {
   MuiThemeProvider,
 } from '@material-ui/core'
 import classNames from 'classnames'
+import UserListItem from './UserListItem'
+import UserPagination from './UserPagination'
 
 const styles = theme => ({
   root: {
@@ -14,20 +16,10 @@ const styles = theme => ({
   }
 });
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#0000ff",
-    },
-    secondary: {
-      main: "#FE6B8B",
-    }
-  }
-});
-
 class UserManagePanel extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    token: PropTypes.string.isRequired,
   }
 
   render() {
@@ -36,18 +28,14 @@ class UserManagePanel extends Component {
       <div className={classNames({
         [classes.root]: true
       })}>
-        <MuiThemeProvider theme={theme}>
-          <Typography 
+        <Typography
           color="primary"
           variant="display4">
-            UserManagePanel
-          </Typography>
-          <div>
-            styled text
-            <br />
-            {`root: { color: "red" }`}
-          </div>
-        </MuiThemeProvider>
+          UserManagePanel
+        </Typography>
+        <UserPagination
+          token={this.props.token}
+        />
       </div>
     )
   }

@@ -15,6 +15,7 @@ import {
   DangerButton,
   PinkButton,
 } from '../utils/Buttons'
+import UserListItem from '../UserManagePanel/UserListItem'
 
 
 const styles = theme => ({
@@ -39,7 +40,7 @@ class WelcomeManagePanel extends Component {
   }
 
   render() {
-    const { classes, username, login } = this.props;
+    const { classes, login } = this.props;
     let welcomePanel;
 
     if (login) {
@@ -51,9 +52,6 @@ class WelcomeManagePanel extends Component {
             variant="display2">
             {this.props.loginMessage}
           </Typography>
-          <PrimaryButton>Primary Button</PrimaryButton>
-          <DangerButton>Danger Button</DangerButton>
-          <PinkButton>Pink Button</PinkButton>
         </div>
       );
     } else {
@@ -65,9 +63,6 @@ class WelcomeManagePanel extends Component {
             variant="display2">
             {this.props.loginMessage}
           </Typography>
-          <PrimaryButton>Primary Button</PrimaryButton>
-          <DangerButton>Danger Button</DangerButton>
-          <PinkButton>Pink Button</PinkButton>
         </div>
       );
     }
