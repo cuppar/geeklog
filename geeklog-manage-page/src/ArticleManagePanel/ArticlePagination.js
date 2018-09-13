@@ -13,7 +13,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import UserListItem from './UserListItem';
+import ArticleListItem from './ArticleListItem';
 import axios from 'axios'
 
 const actionsStyles = theme => ({
@@ -109,7 +109,7 @@ const styles = theme => ({
   },
 });
 
-class UserPagination extends React.Component {
+class ArticlePagination extends React.Component {
   constructor(props) {
     super(props)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
@@ -128,8 +128,9 @@ class UserPagination extends React.Component {
   handleGetRows = (page, rowsPerPage) => {
     this.setState({
       rows: [],
-    })
-    axios.get(`/admin/users?page=${page + 1}&size=${rowsPerPage}`)
+    });
+    axios.get(
+      `/admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
           console.log(res)
@@ -140,16 +141,16 @@ class UserPagination extends React.Component {
             rows: res.data.data.entities,
           })
         } else if (res.data) {
-          console.log('Fail: GET /admin/users?page=1&size=20')
+          console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
           console.log(res.data.message)
           console.log(res)
         } else {
-          console.log('Fail: GET /admin/users?page=1&size=20')
+          console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
           console.log(res)
         }
       })
       .catch(err => {
-        console.log('Fail: GET /admin/users?page=1&size=20')
+        console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
         console.log(err)
       })
   }
@@ -180,8 +181,8 @@ class UserPagination extends React.Component {
                 return (
                   <TableRow key={index}>
                     <TableCell>
-                      <UserListItem
-                        user={row}
+                      <ArticleListItem
+                        article={row}
                         token={token}
                       />
                     </TableCell>
@@ -196,7 +197,7 @@ class UserPagination extends React.Component {
                 </TableRow>
               }
               {emptyRows > 0 && (
-                <TableRow style={{ height: 160 * emptyRows }}>
+                <TableRow style={{ height: 200 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
@@ -221,9 +222,10 @@ class UserPagination extends React.Component {
   }
 }
 
-UserPagination.propTypes = {
+ArticlePagination.propTypes = {
   classes: PropTypes.object.isRequired,
   token: PropTypes.string.isRequired,
+  categoryId: PropTypes.number.isRequired,
 };
 
-export default withStyles(styles)(UserPagination);
+export default withStyles(styles)(ArticlePagination);

@@ -3,16 +3,18 @@ import PropTypes from 'prop-types'
 import {
   Typography,
   withStyles,
-  createMuiTheme,
-  MuiThemeProvider,
+  Paper,
 } from '@material-ui/core'
 import classNames from 'classnames'
-import UserListItem from './UserListItem'
 import UserPagination from './UserPagination'
 
 const styles = theme => ({
   root: {
-    color: "red"
+    color: "red",
+  },
+  title: {
+    width: '100%',
+    textAlign: 'center',
   }
 });
 
@@ -28,11 +30,14 @@ class UserManagePanel extends Component {
       <div className={classNames({
         [classes.root]: true
       })}>
-        <Typography
-          color="primary"
-          variant="display4">
-          UserManagePanel
+        <Paper>
+          <Typography
+            color="primary"
+            className={classes.title}
+            variant="display1">
+            用户管理
         </Typography>
+        </Paper>
         <UserPagination
           token={this.props.token}
         />

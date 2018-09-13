@@ -6,11 +6,11 @@ import {
   Grid,
   withStyles,
   Typography,
-  Button,
+  createMuiTheme,
+  MuiThemeProvider,
 } from '@material-ui/core'
 import {
   PrimaryButton,
-  PinkButton,
   DangerButton,
 } from '../utils/Buttons'
 import axios from 'axios'
@@ -18,10 +18,8 @@ import axios from 'axios'
 
 const styles = theme => ({
   paper: {
-    margin: theme.spacing.unit * 1,
-    padding: theme.spacing.unit * 2,
-    backgroundColor: '#FBAB7E',
-    backgroundImage: 'linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);',
+    margin: theme.spacing.unit,
+    padding: theme.spacing.unit,
     textAlign: 'center',
   },
   grow: {
@@ -32,12 +30,16 @@ const styles = theme => ({
     height: 100,
     backgroundColor: 'yellow',
     color: 'red',
-    fontSize: 36,
+    fontSize: 80,
   },
-  text: {
-    fontSize: 24,
-    color: theme.palette.primary.main,
-  },
+});
+
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: "#aaaaaa",
+    }
+  }
 });
 
 class UserListItem extends Component {
@@ -134,9 +136,10 @@ class UserListItem extends Component {
     axios.delete(`/admin/forbiddens/${this.state.user.user_id}/${authId}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
+          let new_user = Object.assign({}, this.state.user, { [authName]: true })
           this.setState({
             authResMsg: res.data.message,
-            [authName]: true,
+            user: new_user,
           });
         } else if (res.data) {
           this.setState({
@@ -221,51 +224,53 @@ class UserListItem extends Component {
 
     return (
       <div>
-        <Paper className={classes.paper}>
-          <Grid container alignItems="center" spacing={16} wrap="nowrap">
-            {/* avatar */}
-            <Grid item xs={2}>
-              {avatar}
+        <MuiThemeProvider theme={theme}>
+          <Paper className={classes.paper}>
+            <Grid container alignItems="center" spacing={16} wrap="nowrap">
+              {/* avatar */}
+              <Grid item xs={2}>
+                {avatar}
+              </Grid>
+              {/* user id and username */}
+              <Grid
+                className={classes.grow}
+                item
+                container
+                direction="column"
+                spacing={16}
+                zeroMinWidth>
+                <Grid item>
+                  <Typography variant="display1" color="primary">{this.state.user.nickname}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="title" color="secondary">{`用户名: ${this.state.user.username}`}</Typography>
+                </Grid>
+              </Grid>
+              {/* authority */}
+              <Grid item container direction="column" spacing={16}>
+                {/* can write */}
+                <Grid item alignItems="center" container spacing={16}>
+                  <Grid item xs={6}>
+                    <Typography variant="title" color="primary">发表文章</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    {articleAuthorityButton}
+                  </Grid>
+                </Grid>
+                {/* can comment */}
+                <Grid item alignItems="center" container spacing={16}>
+                  <Grid item xs={6}>
+                    <Typography variant="title" color="primary">发表评论</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    {commentAuthorityButton}
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
-            {/* user id and username */}
-            <Grid
-              className={classes.grow}
-              item
-              container
-              direction="column"
-              spacing={16}
-              zeroMinWidth>
-              <Grid item>
-                <Typography variant="display1" className={classes.text}>{this.state.user.nickname}</Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="title" className={classes.text}>{`用户名: ${this.state.user.username}`}</Typography>
-              </Grid>
-            </Grid>
-            {/* authority */}
-            <Grid item container direction="column" spacing={16}>
-              {/* can write */}
-              <Grid item alignItems="center" container spacing={16}>
-                <Grid item xs={6}>
-                  <Typography variant="title" className={classes.text}>发表文章</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  {articleAuthorityButton}
-                </Grid>
-              </Grid>
-              {/* can comment */}
-              <Grid item alignItems="center" container spacing={16}>
-                <Grid item xs={6}>
-                  <Typography variant="title" className={classes.text}>发表评论</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  {commentAuthorityButton}
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-        {msgBar}
+          </Paper>
+          {msgBar}
+        </MuiThemeProvider>
       </div>
     )
   }

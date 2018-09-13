@@ -55,15 +55,22 @@ class PanelContainer extends Component {
                 loginMessage={this.props.loginMessage}
                 login={this.props.login} />
             )}></Route>
-          <Route path="/user-manage"
+          <Route
+            path="/user-manage"
             render={props => (
               <UserManagePanel
-                token={this.props.token}/>
+                token={this.props.token} />
             )}></Route>
           <Route path="/category-manage/add" component={AddCategoryManagePanel}></Route>
           <Route path="/category-manage/modify" component={ModifyCategoryManagePanel}></Route>
           <Route path="/category-manage/delete" component={DeleteCategoryManagePanel}></Route>
-          <Route path="/article-manage" component={ArticleManagePanel}></Route>
+          <Route
+            path="/article-manage"
+            render={props => (
+              <ArticleManagePanel
+                token={this.props.token} />
+            )}
+          ></Route>
           <Redirect from="*" to="/welcome"></Redirect>
         </Switch>
       );
