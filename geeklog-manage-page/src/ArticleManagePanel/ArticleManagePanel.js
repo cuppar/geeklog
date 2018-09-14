@@ -41,9 +41,9 @@ class ArticleManagePanel extends Component {
   state = {
     categoryId: '',
     total: 0,
-    articles: null,
     page: 0,
     rowsPerPage: 5,
+    articleAndAuthors: null,
   }
 
 
@@ -74,17 +74,39 @@ class ArticleManagePanel extends Component {
 
 
   handleGetArticles = (page, rowsPerPage, categoryId) => {
+    this.setState({
+      articleAndAuthors: [],
+    })
     axios.get(
       `/admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
           console.log(res)
+          res.data.data.entities.forEach(article => {
+            axios.get(`/users/${article.user_id}`)
+              .then(res => {
+                if (res.data && res.data.code === 200 && res.data.data) {
+                  this.setState(preState => ({
+                    articleAndAuthors: preState.articleAndAuthors.concat({
+                      article: article,
+                      author: res.data.data,
+                    })
+                  }))
+                } else {
+                  console.log(`Fail: GET /users/${article.user_id}`)
+                  console.log(res.data)
+                }
+              })
+              .catch(err => {
+                console.log(`Fail: GET /users/${article.user_id}`)
+                console.log(err)
+              })
+          });
           this.setState({
+            total: res.data.data.total,
             categoryId: String(categoryId),
             page: page,
             rowsPerPage: rowsPerPage,
-            total: res.data.data.total,
-            articles: res.data.data.entities,
           })
         } else if (res.data) {
           console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
@@ -101,39 +123,10 @@ class ArticleManagePanel extends Component {
       })
   }
 
-  // handleGetArticles = (page, rowsPerPage) => {
-  //   this.setState({
-  //     articles: null,
-  //   });
-  //   axios.get(
-  //     `/admin/articles?category_id=${this.state.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //     .then(res => {
-  //       if (res.data && res.data.code === 200 && res.data.data) {
-  //         console.log(res)
-  //         this.setState({
-  //           page: page,
-  //           rowsPerPage: rowsPerPage,
-  //           total: res.data.data.total,
-  //           articles: res.data.data.entities,
-  //         })
-  //       } else if (res.data) {
-  //         console.log(`Fail: GET /admin/articles?category_id=${this.state.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //         console.log(res.data.message)
-  //         console.log(res)
-  //       } else {
-  //         console.log(`Fail: GET /admin/articles?category_id=${this.state.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //         console.log(res)
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log(`Fail: GET /admin/articles?category_id=${this.state.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //       console.log(err)
-  //     })
-  // }
 
   render() {
     const { classes, token } = this.props;
-    const { categoryId, articles, total, page, rowsPerPage } = this.state;
+    const { categoryId, total, page, rowsPerPage, articleAndAuthors } = this.state;
     console.log('categoryId in ArticleManagePanel: ' + categoryId)
 
     let articleList = categoryId !== ''
@@ -141,7 +134,7 @@ class ArticleManagePanel extends Component {
       <ArticlePagination
         token={token}
         categoryId={categoryId}
-        rows={articles}
+        rows={articleAndAuthors}
         total={total}
         onChangePage={this.handleChangePage}
         onChangeRowsPerPage={this.handleChangeRowsPerPage}

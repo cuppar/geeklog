@@ -198,6 +198,7 @@ class UserListItem extends Component {
 
     let articleAuthorityButton = this.state.user['can_write_article'] ?
       <DangerButton
+        fullwidth
         onClick={() => this.handleForbidden(
           'can_write_article',
           this.state.writeArticleAuthId

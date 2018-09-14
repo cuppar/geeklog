@@ -57,11 +57,11 @@ class UserListItem extends Component {
 
   static propTypes = {
     article: PropTypes.object.isRequired,
+    author: PropTypes.object.isRequired,
     token: PropTypes.string.isRequired,
   }
 
   state = {
-    auther: null,
     resMsg: null, // response of ajax post forbidden
     isDeleted: false,
     confirmDeleteDialogOpen: false,
@@ -76,26 +76,6 @@ class UserListItem extends Component {
       hexColor += hex[rand];
     }
     return hexColor;
-  }
-
-
-  // init auther state
-  componentDidMount = () => {
-    axios.get(`/users/${this.props.article.user_id}`)
-      .then(res => {
-        if (res.data && res.data.code === 200 && res.data.data) {
-          this.setState({
-            auther: res.data.data,
-          });
-        } else {
-          console.log(`Fail: GET /users/${this.props.article.user_id}`)
-          console.log(res)
-        }
-      })
-      .catch(err => {
-        console.log(`Fail: GET /users/${this.props.article.user_id}`)
-        console.log(err)
-      })
   }
 
   // res the comment manage button click
@@ -186,15 +166,15 @@ class UserListItem extends Component {
   }
 
   render() {
-    const { classes, article } = this.props;
-    const { auther, confirmDeleteDialogOpen, articleDisplay } = this.state;
+    const { classes, article, author } = this.props;
+    const { confirmDeleteDialogOpen, articleDisplay } = this.state;
 
-    // auther's avatar
-    let avatar = auther && auther.avatar ?
+    // author's avatar
+    let avatar = author && author.avatar ?
       <Avatar
         className={classes.avatar}
-        alt={auther.nickname}
-        src={auther.avatar}></Avatar>
+        alt={author.nickname}
+        src={author.avatar}></Avatar>
       :
       <Avatar
         className={classes.avatar}
@@ -203,7 +183,7 @@ class UserListItem extends Component {
           color: this.randomColor(),
         }}
       >
-        {auther ? auther.nickname[1].toUpperCase() : 'A'}
+        {author ? author.nickname[1].toUpperCase() : 'A'}
       </Avatar>
 
     // delete article button
@@ -256,18 +236,16 @@ class UserListItem extends Component {
               >
 
                 {/* avatar */}
-                <Grid item xs={2}>
+                <Grid item>
                   {avatar}
                 </Grid>
 
-                {/* article title, createdAt and auther */}
+                {/* article title, createdAt and author */}
                 <Grid
-                  className={classes.grow}
                   item
                   container
                   direction="column"
                   spacing={16}
-                  zeroMinWidth
                 >
                   <Grid item>
                     <Typography
@@ -293,14 +271,14 @@ class UserListItem extends Component {
                       variant="body1"
                       className={classes.bold}
                     >
-                      {auther ? `作者: ${auther.nickname}` : '作者: '}
+                      {author ? `作者: ${author.nickname}` : '作者: '}
                     </Typography>
                   </Grid>
                 </Grid>
 
                 {/* comment manage */}
-                <Grid item container spacing={16}>
-                  <Grid item xs={12}>
+                <Grid item container>
+                  <Grid item>
                     <PinkButton
                       onClick={() => this.handleCommentManageButtonClick()}
                     >
@@ -310,11 +288,11 @@ class UserListItem extends Component {
                 </Grid>
 
                 {/* delete / hidden article */}
-                <Grid item container direction="column" spacing={16}>
+                <Grid item container direction="column" spacing={8}>
 
                   {/* delete article */}
                   <Grid item alignItems="center" container spacing={16}>
-                    <Grid item xs={6}>
+                    <Grid item xs={4}>
                       <Typography
                         variant="body1"
                         color="primary"
@@ -323,14 +301,14 @@ class UserListItem extends Component {
                         删除文章
                       </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={8}>
                       {deleteArticleButton}
                     </Grid>
                   </Grid>
 
                   {/* hidden article */}
                   <Grid item alignItems="center" container spacing={16}>
-                    <Grid item xs={6}>
+                    <Grid item xs={4}>
                       <Typography
                         variant="body1"
                         color="primary"
@@ -339,7 +317,7 @@ class UserListItem extends Component {
                         隐藏/显示
                       </Typography>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={8}>
                       {displayArticleButton}
                     </Grid>
                   </Grid>

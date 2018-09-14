@@ -118,45 +118,6 @@ class ArticlePagination extends React.Component {
     axios.defaults.baseURL = 'http://47.106.158.254/';
   }
 
-  // state = {
-  //   page: 0,
-  //   rowsPerPage: 5,
-  // };
-
-  // handleGetRows = (page, rowsPerPage) => {
-  //   // this.setState({
-  //   //   rows: [],
-  //   // });
-  //   axios.get(
-  //     `/admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //     .then(res => {
-  //       if (res.data && res.data.code === 200 && res.data.data) {
-  //         console.log(res)
-  //         this.setState({
-  //           page: page,
-  //           rowsPerPage: rowsPerPage,
-  //           // total: res.data.data.total,
-  //           // rows: res.data.data.entities,
-  //         })
-  //       } else if (res.data) {
-  //         console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //         console.log(res.data.message)
-  //         console.log(res)
-  //       } else {
-  //         console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //         console.log(res)
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-  //       console.log(err)
-  //     })
-  // }
-
-  // componentDidMount = () => {
-  //   this.props.onGetArticles(this.state.page, this.state.rowsPerPage)
-  // }
-
   handleChangePage = (event, page) => {
     this.props.onChangePage(event, page)
   };
@@ -179,8 +140,9 @@ class ArticlePagination extends React.Component {
                   <TableRow key={index}>
                     <TableCell>
                       <ArticleListItem
-                        article={row}
+                        article={row.article}
                         token={token}
+                        author={row.author}
                       />
                     </TableCell>
                   </TableRow>
@@ -229,7 +191,7 @@ ArticlePagination.propTypes = {
   onChangePage: PropTypes.func.isRequired,
   onChangeRowsPerPage: PropTypes.func.isRequired,
   rows: PropTypes.array,
-  total: PropTypes.number.isRequired,
+  total: PropTypes.number,
 };
 
 export default withStyles(styles)(ArticlePagination);

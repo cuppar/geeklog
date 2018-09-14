@@ -39,7 +39,9 @@ class PanelContainer extends Component {
               <WelcomeManagePanel
                 username={this.props.username}
                 loginMessage={this.props.loginMessage}
-                login={this.props.login} />
+                login={this.props.login}
+                token={this.props.token}
+              />
             )}></Route>
           <Redirect to="/welcome"></Redirect>
         </Switch>
@@ -61,9 +63,24 @@ class PanelContainer extends Component {
               <UserManagePanel
                 token={this.props.token} />
             )}></Route>
-          <Route path="/category-manage/add" component={AddCategoryManagePanel}></Route>
-          <Route path="/category-manage/modify" component={ModifyCategoryManagePanel}></Route>
-          <Route path="/category-manage/delete" component={DeleteCategoryManagePanel}></Route>
+          <Route
+            path="/category-manage/add"
+            render={props => (
+              <AddCategoryManagePanel
+                token={this.props.token} />
+            )}></Route>
+          <Route
+            path="/category-manage/modify"
+            render={props => (
+              <ModifyCategoryManagePanel
+                token={this.props.token} />
+            )}></Route>
+          <Route
+            path="/category-manage/delete"
+            render={props => (
+              <DeleteCategoryManagePanel
+                token={this.props.token} />
+            )}></Route>
           <Route
             path="/article-manage"
             render={props => (
@@ -75,8 +92,6 @@ class PanelContainer extends Component {
         </Switch>
       );
     }
-
-
     return container;
   }
 }

@@ -20,7 +20,7 @@ class TitleBar extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, title } = this.props;
 
     return (
       <div>
