@@ -10,12 +10,6 @@ import {
   MuiThemeProvider,
 } from '@material-ui/core'
 import classNames from 'classnames'
-import {
-  PrimaryButton,
-  DangerButton,
-  PinkButton,
-} from '../utils/Buttons'
-import UserListItem from '../UserManagePanel/UserListItem'
 
 
 const styles = theme => ({

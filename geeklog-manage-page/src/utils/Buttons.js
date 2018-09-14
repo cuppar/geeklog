@@ -4,25 +4,29 @@ import {
 import {Button} from '@material-ui/core'
 
 const PrimaryButton = styled(Button)({
-  backgroundColor: '#351bb5',
-  backgroundImage: 'linear-gradient(45deg, #351bb5 14%, #130967 44%, #44156d 74%, #8239c4 91%)',
-  borderRadius: 3,
+  backgroundColor: '#2539c1',
+  backgroundImage: 'linear-gradient(19deg, #2539c1 0%, #29208c 100%);',
+  borderRadius: 4,
   border: 0,
   color: 'white',
-  height: 48,
-  padding: '0 30px',
+  height: 30,
+  padding: '0 40px',
   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  fontSize: 20,
+  fontWeight: 'bold',
 });
 
 const DangerButton = styled(Button)({
-  backgroundColor: '#940303',
-  backgroundImage: 'linear-gradient(180deg, #940303 25%, #ff2c2f 100%)',
-  borderRadius: 3,
+  backgroundColor: '#96120b',
+  backgroundImage: 'linear-gradient(180deg, #96120b 0%, #b90531 100%);',
+  borderRadius: 4,
   border: 0,
   color: 'white',
-  height: 48,
-  padding: '0 30px',
+  height: 30,
+  padding: '0 40px',
   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  fontSize: 20,
+  fontWeight: 'bold',
 });
 
 const PinkButton = styled(Button)({

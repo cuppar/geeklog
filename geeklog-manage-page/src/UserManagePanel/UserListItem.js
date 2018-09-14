@@ -26,12 +26,13 @@ const styles = theme => ({
     flexGrow: 1,
   },
   avatar: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'yellow',
-    color: 'red',
-    fontSize: 80,
+    width: 80,
+    height: 80,
+    fontSize: 60,
   },
+  bold: {
+    fontWeight: 'bold',
+  }
 });
 
 const theme = createMuiTheme({
@@ -61,6 +62,16 @@ class UserListItem extends Component {
     authResMsg: null, // response of ajax post forbidden
     writeArticleAuthId: null,
     commentAuthId: null,
+  }
+
+  randomColor = () => {
+    let hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
+    let rand, hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+      rand = Math.floor(Math.random() * 16)
+      hexColor += hex[rand];
+    }
+    return hexColor;
   }
 
   componentDidMount = () => {
@@ -176,7 +187,13 @@ class UserListItem extends Component {
       :
       <Avatar
         className={classes.avatar}
-      >{this.state.user.nickname[0].toUpperCase()}</Avatar>
+        style={{
+          backgroundColor: this.randomColor(),
+          color: this.randomColor(),
+        }}
+      >
+        {this.state.user.nickname[1].toUpperCase()}
+      </Avatar>
 
 
     let articleAuthorityButton = this.state.user['can_write_article'] ?
@@ -215,7 +232,13 @@ class UserListItem extends Component {
 
     let msgBar = this.state.authResMsg ? (
       <Paper className={classes.paper}>
-        <Typography color="primary" variant="title">{this.state.authResMsg}</Typography>
+        <Typography
+          color="primary"
+          variant="body1"
+          className={classes.bold}
+        >
+          {this.state.authResMsg}
+        </Typography>
       </Paper>
     )
       :
@@ -240,10 +263,22 @@ class UserListItem extends Component {
                 spacing={16}
                 zeroMinWidth>
                 <Grid item>
-                  <Typography variant="display1" color="primary">{this.state.user.nickname}</Typography>
+                  <Typography
+                    variant="title"
+                    color="primary"
+                    className={classes.bold}
+                  >
+                    {this.state.user.nickname}
+                  </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="title" color="secondary">{`用户名: ${this.state.user.username}`}</Typography>
+                  <Typography
+                    variant="body1"
+                    color="secondary"
+                    className={classes.bold}
+                  >
+                    {`用户名: ${this.state.user.username}`}
+                  </Typography>
                 </Grid>
               </Grid>
               {/* authority */}
@@ -251,7 +286,13 @@ class UserListItem extends Component {
                 {/* can write */}
                 <Grid item alignItems="center" container spacing={16}>
                   <Grid item xs={6}>
-                    <Typography variant="title" color="primary">发表文章</Typography>
+                    <Typography
+                      variant="body1"
+                      color="primary"
+                      className={classes.bold}
+                    >
+                      发表文章
+                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     {articleAuthorityButton}
@@ -260,7 +301,13 @@ class UserListItem extends Component {
                 {/* can comment */}
                 <Grid item alignItems="center" container spacing={16}>
                   <Grid item xs={6}>
-                    <Typography variant="title" color="primary">发表评论</Typography>
+                    <Typography
+                      variant="body1"
+                      color="primary"
+                      className={classes.bold}
+                    >
+                      发表评论
+                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
                     {commentAuthorityButton}

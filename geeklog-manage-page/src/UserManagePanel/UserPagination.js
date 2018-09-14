@@ -169,7 +169,7 @@ class UserPagination extends React.Component {
   render() {
     const { classes, token } = this.props;
     const { rows, rowsPerPage, page, total } = this.state;
-    const emptyRows = rows ? rowsPerPage - rows.length : rowsPerPage;
+    // const emptyRows = rows ? rowsPerPage - rows.length : rowsPerPage;
 
     return (
       <Paper className={classes.root}>
@@ -195,11 +195,14 @@ class UserPagination extends React.Component {
                   </TableCell>
                 </TableRow>
               }
-              {emptyRows > 0 && (
+              
+              {/* empty rows */}
+              {/* {emptyRows > 0 && (
                 <TableRow style={{ height: 160 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
-              )}
+              )} */}
+
             </TableBody>
             <TableFooter>
               <TableRow>

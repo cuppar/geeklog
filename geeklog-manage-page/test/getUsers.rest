@@ -1,5 +1,5 @@
 ###
-GET http://47.106.158.254/admin/users?page=2&size=5  HTTP/1.1
+GET http://47.106.158.254/admin/users?page=1&size=5  HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDU0MjksImlhdCI6MTUzNjgwMDYyOSwianRpIjoiNzViNjJiMjctNDQ5YS00N2Q1LWFhZjUtOGI1ZmJiZGM5MTFhIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.ckkGVGaevr4lAnThu1n4hWvRgvYESu2mQNXJ9XvwgJw
 
 ###
@@ -19,5 +19,49 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsI
 ###
 GET http://47.106.158.254/admin/articles?category_id=1&page=1&size=30
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
-entities
+
+###
+DELETE http://47.106.158.254/admin/categories/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+
+###
+get http://47.106.158.254/admin/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+
+###
+get http://47.106.158.254/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+
+###
+get http://47.106.158.254/admin/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+
+###
+GET url HTTP/1.1
+
+### category c
+POST http://47.106.158.254/admin/categories HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+Content-Type: application/json
+
+{
+    "name": "a category",
+    "description": "describe it"
+}
+### r
+GET  http://47.106.158.254/admin/categories HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+### u
+put http://47.106.158.254/admin/categories/9 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+Content-Type: application/json
+
+{
+    "name": "a category",
+    "description": "modify it"
+}
+### d
+DELETE  http://47.106.158.254/admin/categories/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+
 

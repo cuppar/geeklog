@@ -118,59 +118,56 @@ class ArticlePagination extends React.Component {
     axios.defaults.baseURL = 'http://47.106.158.254/';
   }
 
-  state = {
-    total: 0,
-    page: 0,
-    rowsPerPage: 5,
-    rows: [],
-  };
+  // state = {
+  //   page: 0,
+  //   rowsPerPage: 5,
+  // };
 
-  handleGetRows = (page, rowsPerPage) => {
-    this.setState({
-      rows: [],
-    });
-    axios.get(
-      `/admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-      .then(res => {
-        if (res.data && res.data.code === 200 && res.data.data) {
-          console.log(res)
-          this.setState({
-            page: page,
-            rowsPerPage: rowsPerPage,
-            total: res.data.data.total,
-            rows: res.data.data.entities,
-          })
-        } else if (res.data) {
-          console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-          console.log(res.data.message)
-          console.log(res)
-        } else {
-          console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-          console.log(res)
-        }
-      })
-      .catch(err => {
-        console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-        console.log(err)
-      })
-  }
+  // handleGetRows = (page, rowsPerPage) => {
+  //   // this.setState({
+  //   //   rows: [],
+  //   // });
+  //   axios.get(
+  //     `/admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+  //     .then(res => {
+  //       if (res.data && res.data.code === 200 && res.data.data) {
+  //         console.log(res)
+  //         this.setState({
+  //           page: page,
+  //           rowsPerPage: rowsPerPage,
+  //           // total: res.data.data.total,
+  //           // rows: res.data.data.entities,
+  //         })
+  //       } else if (res.data) {
+  //         console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+  //         console.log(res.data.message)
+  //         console.log(res)
+  //       } else {
+  //         console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+  //         console.log(res)
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.log(`Fail: GET /admin/articles?category_id=${this.props.categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+  //       console.log(err)
+  //     })
+  // }
 
-  componentDidMount = () => {
-    this.handleGetRows(this.state.page, this.state.rowsPerPage)
-  }
+  // componentDidMount = () => {
+  //   this.props.onGetArticles(this.state.page, this.state.rowsPerPage)
+  // }
 
   handleChangePage = (event, page) => {
-    this.handleGetRows(page, this.state.rowsPerPage)
+    this.props.onChangePage(event, page)
   };
 
   handleChangeRowsPerPage = event => {
-    this.handleGetRows(0, event.target.value)
+    this.props.onChangeRowsPerPage(event.target.value)
   };
 
   render() {
-    const { classes, token } = this.props;
-    const { rows, rowsPerPage, page, total } = this.state;
-    const emptyRows = rows ? rowsPerPage - rows.length : rowsPerPage;
+    const { classes, token, rows, total, rowsPerPage, page } = this.props;
+    // const emptyRows = rows ? rowsPerPage - rows.length : rowsPerPage;
 
     return (
       <Paper className={classes.root}>
@@ -192,15 +189,18 @@ class ArticlePagination extends React.Component {
                 :
                 <TableRow>
                   <TableCell>
-                    {'Error'}
+                    {'文章列表为空'}
                   </TableCell>
                 </TableRow>
               }
-              {emptyRows > 0 && (
+
+              {/* empty rows */}
+              {/* {emptyRows > 0 && (
                 <TableRow style={{ height: 200 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
-              )}
+              )} */}
+
             </TableBody>
             <TableFooter>
               <TableRow>
@@ -225,7 +225,11 @@ class ArticlePagination extends React.Component {
 ArticlePagination.propTypes = {
   classes: PropTypes.object.isRequired,
   token: PropTypes.string.isRequired,
-  categoryId: PropTypes.number.isRequired,
+  categoryId: PropTypes.string.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  onChangeRowsPerPage: PropTypes.func.isRequired,
+  rows: PropTypes.array,
+  total: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(ArticlePagination);

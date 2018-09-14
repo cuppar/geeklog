@@ -29,12 +29,13 @@ const styles = theme => ({
     flexGrow: 1,
   },
   avatar: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'yellow',
-    color: 'red',
-    fontSize: 80,
+    width: 80,
+    height: 80,
+    fontSize: 60,
   },
+  bold: {
+    fontWeight: 'bold',
+  }
 });
 
 const theme = createMuiTheme({
@@ -67,6 +68,17 @@ class UserListItem extends Component {
     articleDisplay: this.props.article.display,
   }
 
+  randomColor = () => {
+    let hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
+    let rand, hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+      rand = Math.floor(Math.random() * 16)
+      hexColor += hex[rand];
+    }
+    return hexColor;
+  }
+
+
   // init auther state
   componentDidMount = () => {
     axios.get(`/users/${this.props.article.user_id}`)
@@ -76,12 +88,12 @@ class UserListItem extends Component {
             auther: res.data.data,
           });
         } else {
-          console.log('Fail: GET /users/${this.props.article.user_id}')
+          console.log(`Fail: GET /users/${this.props.article.user_id}`)
           console.log(res)
         }
       })
       .catch(err => {
-        console.log('Fail: GET /users/${this.props.article.user_id}')
+        console.log(`Fail: GET /users/${this.props.article.user_id}`)
         console.log(err)
       })
   }
@@ -112,7 +124,7 @@ class UserListItem extends Component {
         console.log(res)
         if (res.data && res.data.code === 200 && res.data.data) {
           this.setState(preState => ({
-            resMsg: res.data.message,
+            resMsg: `删除${this.props.article.title}: ${res.data.message}`,
             isDeleted: true,
           }));
         } else if (res.data) {
@@ -186,7 +198,13 @@ class UserListItem extends Component {
       :
       <Avatar
         className={classes.avatar}
-      >{auther ? auther.nickname[0].toUpperCase() : 'A'}</Avatar>
+        style={{
+          backgroundColor: this.randomColor(),
+          color: this.randomColor(),
+        }}
+      >
+        {auther ? auther.nickname[1].toUpperCase() : 'A'}
+      </Avatar>
 
     // delete article button
     let deleteArticleButton = (
@@ -213,7 +231,11 @@ class UserListItem extends Component {
     // display response message
     let msgBar = this.state.resMsg ? (
       <Paper className={classes.paper}>
-        <Typography color="primary" variant="title">
+        <Typography
+          color="primary"
+          variant="title"
+          className={classes.bold}
+        >
           {this.state.resMsg}
         </Typography>
       </Paper>
@@ -248,17 +270,29 @@ class UserListItem extends Component {
                   zeroMinWidth
                 >
                   <Grid item>
-                    <Typography color="primary" variant="display1">
+                    <Typography
+                      color="primary"
+                      variant="title"
+                      className={classes.bold}
+                    >
                       {article.title}
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography color="secondary" variant="title">
-                      {`创建时间: ${article.created_at}`}
+                    <Typography
+                      color="secondary"
+                      variant="body1"
+                      className={classes.bold}
+                    >
+                      {`创建时间: ${new Date(article.created_at).toLocaleString()}`}
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography color="secondary" variant="title">
+                    <Typography
+                      color="secondary"
+                      variant="body1"
+                      className={classes.bold}
+                    >
                       {auther ? `作者: ${auther.nickname}` : '作者: '}
                     </Typography>
                   </Grid>
@@ -266,7 +300,7 @@ class UserListItem extends Component {
 
                 {/* comment manage */}
                 <Grid item container spacing={16}>
-                  <Grid item>
+                  <Grid item xs={12}>
                     <PinkButton
                       onClick={() => this.handleCommentManageButtonClick()}
                     >
@@ -281,7 +315,11 @@ class UserListItem extends Component {
                   {/* delete article */}
                   <Grid item alignItems="center" container spacing={16}>
                     <Grid item xs={6}>
-                      <Typography variant="title" color="primary">
+                      <Typography
+                        variant="body1"
+                        color="primary"
+                        className={classes.bold}
+                      >
                         删除文章
                       </Typography>
                     </Grid>
@@ -293,7 +331,11 @@ class UserListItem extends Component {
                   {/* hidden article */}
                   <Grid item alignItems="center" container spacing={16}>
                     <Grid item xs={6}>
-                      <Typography variant="title" color="primary">
+                      <Typography
+                        variant="body1"
+                        color="primary"
+                        className={classes.bold}
+                      >
                         隐藏/显示
                       </Typography>
                     </Grid>
