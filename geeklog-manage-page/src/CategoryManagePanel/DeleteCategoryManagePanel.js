@@ -1,53 +1,62 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Typography,
+  // Typography,
   withStyles,
-  createMuiTheme,
-  MuiThemeProvider,
 } from '@material-ui/core'
-import classNames from 'classnames'
+// import classNames from 'classnames'
+import TitleBar from '../utils/TitleBar'
+import MsgBar from '../utils/MsgBar'
+import CategorySelecter from '../utils/CategorySelecter';
+import DeleteCategoryForm from './DeleteCategoryForm';
 
 const styles = theme => ({
-  root: {
-    color: "red"
-  }
-});
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#0000ff",
-    },
-    secondary: {
-      main: "#FE6B8B",
-    }
-  }
 });
 
 class DeleteCategoryManagePanel extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    token: PropTypes.string.isRequired,
+  }
+
+  state = {
+    message: '',
+    messageDisplay: false,
+    categoryId: '',
+  }
+
+  handleChangeMessage = (message) => {
+    this.setState({
+      message: message,
+      messageDisplay: true,
+    })
+  }
+
+  handleChangeArticleCategory = (categoryId) => {
+    this.setState({
+      categoryId: String(categoryId),
+    })
   }
 
   render() {
-    const { classes } = this.props;
+    const { token } = this.props;
+    const { message, messageDisplay, categoryId } = this.state;
+
     return (
-      <div className={classNames({
-        [classes.root]: true
-      })}>
-        <MuiThemeProvider theme={theme}>
-          <Typography 
-          color="primary"
-          variant="display4">
-            DeleteCategoryManagePanel
-          </Typography>
-          <div>
-            styled text
-            <br />
-            {`root: { color: "red" }`}
-          </div>
-        </MuiThemeProvider>
+      <div>
+        <TitleBar title="删除分类" />
+        <CategorySelecter
+          token={token}
+          onChangeArticleCategory={this.handleChangeArticleCategory}
+          categoryId={categoryId}
+        />
+        <DeleteCategoryForm
+          token={token}
+          categoryId={categoryId}
+          onChangeMessage={this.handleChangeMessage}
+        />
+        <MsgBar message={message} display={messageDisplay} />
       </div>
     )
   }

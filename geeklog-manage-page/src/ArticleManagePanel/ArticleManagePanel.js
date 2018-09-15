@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import classNames from 'classnames'
 import ArticlePagination from './ArticlePagination'
-import ArticleSelecter from '../utils/ArticleSelecter'
+import CategorySelecter from '../utils/CategorySelecter'
 import axios from 'axios'
 
 
@@ -165,7 +165,7 @@ class ArticleManagePanel extends Component {
           </Paper>
 
           {/* category selecter */}
-          <ArticleSelecter
+          <CategorySelecter
             categoryId={categoryId}
             onChangeArticleCategory={this.handleChangeArticleCategory}
             token={token}

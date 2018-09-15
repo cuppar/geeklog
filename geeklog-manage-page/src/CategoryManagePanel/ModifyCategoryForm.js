@@ -16,7 +16,7 @@ const styles = theme => ({
 });
 
 
-class AddCategoryForm extends Component {
+class ModifyCategoryForm extends Component {
   constructor(props) {
     super(props)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
@@ -29,6 +29,7 @@ class AddCategoryForm extends Component {
   static propTypes = {
     onChangeMessage: PropTypes.func.isRequired,
     token: PropTypes.string.isRequired,
+    categoryId: PropTypes.string.isRequired,
   }
 
   state = {
@@ -48,8 +49,8 @@ class AddCategoryForm extends Component {
     })
   }
 
-  handleClickAddButton = () => {
-    axios.post('/admin/categories', {
+  handleClickModifyButton = () => {
+    axios.put(`/admin/categories/${this.props.categoryId}`, {
       "name": this.state.categoryName,
       "description": this.state.categoryDescription,
     })
@@ -60,17 +61,17 @@ class AddCategoryForm extends Component {
         } else if (res.data) {
           this.props.onChangeMessage(res.data.code + ': ' + res.data.message)
         } else {
-          console.log('Fail: post /admin/forbiddens ')
+          console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
           console.log(res)
         }
       })
       .catch(err => {
         if (err.data) {
           this.props.onChangeMessage(err.toString())
-          console.log('Fail: post /admin/forbiddens ')
+          console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
         } else {
           this.props.onChangeMessage(err.toString())
-          console.log('Fail: post /admin/forbiddens ')
+          console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
         }
       })
   }
@@ -113,7 +114,7 @@ class AddCategoryForm extends Component {
             />
           </Grid>
           <Grid item xs={12}>
-            <PinkButton fullWidth onClick={this.handleClickAddButton}>添加分类</PinkButton>
+            <PinkButton fullWidth onClick={this.handleClickModifyButton}>确认修改分类</PinkButton>
           </Grid>
         </Grid>
       </div>
@@ -121,4 +122,4 @@ class AddCategoryForm extends Component {
   }
 }
 
-export default withStyles(styles)(AddCategoryForm)
+export default withStyles(styles)(ModifyCategoryForm)

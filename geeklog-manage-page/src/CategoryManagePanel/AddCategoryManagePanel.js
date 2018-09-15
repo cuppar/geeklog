@@ -1,31 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  Typography,
+  // Typography,
   withStyles,
-  createMuiTheme,
-  MuiThemeProvider,
 } from '@material-ui/core'
-import classNames from 'classnames'
+// import classNames from 'classnames'
 import TitleBar from '../utils/TitleBar'
 import MsgBar from '../utils/MsgBar'
 import AddCategoryForm from './AddCategoryForm'
 
 const styles = theme => ({
-  root: {
-    color: "red"
-  }
-});
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#0000ff",
-    },
-    secondary: {
-      main: "#FE6B8B",
-    }
-  }
 });
 
 class AddCategoryManagePanel extends Component {
@@ -47,7 +32,7 @@ class AddCategoryManagePanel extends Component {
   }
 
   render() {
-    const { classes, token } = this.props;
+    const { token } = this.props;
     const { message, messageDisplay } = this.state;
 
     return (

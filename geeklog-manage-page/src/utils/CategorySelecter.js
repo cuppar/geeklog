@@ -15,13 +15,14 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
+    width: '100%',
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
   },
 });
 
-class ArticleSelecter extends Component {
+class CategorySelecter extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,13 +45,9 @@ class ArticleSelecter extends Component {
 
 
   handleChangeSelectedArticleCategory = event => {
-    // this.setState({
-    //   [e.target.name]: e.target.value,
-    //   categoryId: e.target.value,
-    // })
     console.log('event.target.value: ' + event.target.value)
     console.log('event.target' + event.target.toString())
-    this.props.onChangeArticleCategory(event.target.value)
+    this.props.onChangeArticleCategory(String(event.target.value))
   }
 
   componentDidMount = () => {
@@ -63,7 +60,7 @@ class ArticleSelecter extends Component {
           });
           // this.props.onChangeArticleCategory(this.state.categoryId);
           console.log('res.data.data[0].categoryId: ' + res.data.data[0].category_id)
-          this.props.onChangeArticleCategory(res.data.data[0].category_id);
+          this.props.onChangeArticleCategory(String(res.data.data[0].category_id));
         } else {
           console.log(`Fail: GET /users/categories`)
           console.log(res)
@@ -115,4 +112,4 @@ class ArticleSelecter extends Component {
   }
 }
 
-export default withStyles(styles)(ArticleSelecter);
+export default withStyles(styles)(CategorySelecter);
