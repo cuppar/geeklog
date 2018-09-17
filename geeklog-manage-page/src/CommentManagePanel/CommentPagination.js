@@ -13,8 +13,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import UserListItem from './UserListItem';
-import axios from 'axios'
+import CommentListItem from './CommentListItem';
 
 const actionsStyles = theme => ({
   root: {
@@ -51,28 +50,28 @@ class TablePaginationActions extends React.Component {
       <div className={classes.root}>
         <IconButton
           onClick={this.handleFirstPageButtonClick}
-          disabled={page === 0}
+          disabled={Number(page) === 0}
           aria-label="First Page"
         >
           {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
         </IconButton>
         <IconButton
           onClick={this.handleBackButtonClick}
-          disabled={page === 0}
+          disabled={Number(page) === 0}
           aria-label="Previous Page"
         >
           {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
         </IconButton>
         <IconButton
           onClick={this.handleNextButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          disabled={Number(page) >= Math.ceil(count / rowsPerPage) - 1}
           aria-label="Next Page"
         >
           {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
         </IconButton>
         <IconButton
           onClick={this.handleLastPageButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          disabled={Number(page) >= Math.ceil(count / rowsPerPage) - 1}
           aria-label="Last Page"
         >
           {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
@@ -109,66 +108,17 @@ const styles = theme => ({
   },
 });
 
-class UserPagination extends React.Component {
-  constructor(props) {
-    super(props)
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.defaults.baseURL = 'http://47.106.158.254/';
-  }
-
-  state = {
-    total: 0,
-    page: 0,
-    rowsPerPage: 5,
-    rows: [],
-  };
-
-  handleGetRows = (page, rowsPerPage) => {
-    this.setState({
-      rows: [],
-    })
-    axios.get(`/admin/users?page=${page + 1}&size=${rowsPerPage}`)
-      .then(res => {
-        if (res.data && res.data.code === 200 && res.data.data) {
-          console.log(res)
-          this.setState({
-            page: page,
-            rowsPerPage: rowsPerPage,
-            total: res.data.data.total,
-            rows: res.data.data.entities,
-          })
-        } else if (res.data) {
-          console.log('Fail: GET /admin/users?page=1&size=20')
-          console.log(res.data.message)
-          console.log(res)
-        } else {
-          console.log('Fail: GET /admin/users?page=1&size=20')
-          console.log(res)
-        }
-      })
-      .catch(err => {
-        console.log('Fail: GET /admin/users?page=1&size=20')
-        console.log(err)
-      })
-  }
-
-  componentDidMount = () => {
-    this.handleGetRows(this.state.page, this.state.rowsPerPage)
-  }
-
+class CommentPagination extends React.Component {
   handleChangePage = (event, page) => {
-    this.handleGetRows(page, this.state.rowsPerPage)
+    this.props.onChangePage(page)
   };
 
   handleChangeRowsPerPage = event => {
-    this.handleGetRows(0, event.target.value)
+    this.props.onChangeRowsPerPage(event.target.value)
   };
 
   render() {
-    const { classes, token } = this.props;
-    const { rows, rowsPerPage, page, total } = this.state;
-    // const emptyRows = rows ? rowsPerPage - rows.length : rowsPerPage;
+    const { classes, rows, rowsPerPage, page, total, token } = this.props;
 
     return (
       <Paper className={classes.root}>
@@ -179,8 +129,9 @@ class UserPagination extends React.Component {
                 return (
                   <TableRow key={index}>
                     <TableCell>
-                      <UserListItem
-                        user={row}
+                      <CommentListItem
+                        comment={row.comment}
+                        author={row.author}
                         token={token}
                       />
                     </TableCell>
@@ -190,26 +141,19 @@ class UserPagination extends React.Component {
                 :
                 <TableRow>
                   <TableCell>
-                    {'Error'}
+                    {'Error: no comment list'}
                   </TableCell>
                 </TableRow>
               }
-              
-              {/* empty rows */}
-              {/* {emptyRows > 0 && (
-                <TableRow style={{ height: 160 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )} */}
 
             </TableBody>
             <TableFooter>
               <TableRow>
                 <TablePagination
                   colSpan={3}
-                  count={total}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
+                  count={Number(total)}
+                  rowsPerPage={Number(rowsPerPage)}
+                  page={Number(page)}
                   onChangePage={this.handleChangePage}
                   onChangeRowsPerPage={this.handleChangeRowsPerPage}
                   ActionsComponent={TablePaginationActionsWrapped}
@@ -223,9 +167,15 @@ class UserPagination extends React.Component {
   }
 }
 
-UserPagination.propTypes = {
+CommentPagination.propTypes = {
   classes: PropTypes.object.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  onChangeRowsPerPage: PropTypes.func.isRequired,
+  rows: PropTypes.array.isRequired,
+  page: PropTypes.string.isRequired,
+  rowsPerPage: PropTypes.string.isRequired,
+  total: PropTypes.string.isRequired,
   token: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(UserPagination);
+export default withStyles(styles)(CommentPagination);

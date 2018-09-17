@@ -23,7 +23,7 @@ class MsgBar extends Component {
   render() {
     const { classes, display, message } = this.props;
 
-    return !display
+    return (!display
       ?
       <div></div>
       :
@@ -39,7 +39,9 @@ class MsgBar extends Component {
           </Paper>
         </div>
       )
+    )
   }
+
 }
 
 export default withStyles(styles)(MsgBar);

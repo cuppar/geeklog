@@ -6,12 +6,12 @@ import UserManagePanel from '../UserManagePanel/UserManagePanel';
 import AddCategoryManagePanel from '../CategoryManagePanel/AddCategoryManagePanel';
 import ModifyCategoryManagePanel from '../CategoryManagePanel/ModifyCategoryManagePanel';
 import DeleteCategoryManagePanel from '../CategoryManagePanel/DeleteCategoryManagePanel';
-import ArticleManagePanel from '../ArticleManagePanel/ArticleManagePanel';
 import {
   Route,
   Redirect,
   Switch
 } from 'react-router-dom'
+import ContentManagePanel from './ContentManagePanel';
 
 
 const styles = theme => ({
@@ -82,9 +82,9 @@ class PanelContainer extends Component {
                 token={this.props.token} />
             )}></Route>
           <Route
-            path="/article-manage"
+            path="/content-manage"
             render={props => (
-              <ArticleManagePanel
+              <ContentManagePanel
                 token={this.props.token} />
             )}
           ></Route>

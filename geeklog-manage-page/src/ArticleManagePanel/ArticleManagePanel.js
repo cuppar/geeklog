@@ -11,6 +11,7 @@ import classNames from 'classnames'
 import ArticlePagination from './ArticlePagination'
 import CategorySelecter from '../utils/CategorySelecter'
 import axios from 'axios'
+import { Route } from 'react-router-dom'
 
 
 const styles = theme => ({
@@ -29,7 +30,6 @@ class ArticleManagePanel extends Component {
     super(props)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.defaults.timeout = 3000;
     axios.defaults.baseURL = 'http://47.106.158.254/';
   }
 
@@ -173,6 +173,7 @@ class ArticleManagePanel extends Component {
 
           {/* article list */}
           {articleList}
+
         </MuiThemeProvider>
       </div>
     )

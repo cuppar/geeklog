@@ -16,6 +16,7 @@ import {
 } from '../utils/Buttons'
 import axios from 'axios'
 import ConfirmDeleteDialog from './ConfirmDeleteDialog'
+import { Link } from 'react-router-dom'
 
 
 
@@ -35,6 +36,9 @@ const styles = theme => ({
   },
   bold: {
     fontWeight: 'bold',
+  },
+  link: {
+    textDecoration: "none"
   }
 });
 
@@ -51,7 +55,6 @@ class UserListItem extends Component {
     super(props)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.defaults.timeout = 3000;
     axios.defaults.baseURL = 'http://47.106.158.254/';
   }
 
@@ -279,11 +282,13 @@ class UserListItem extends Component {
                 {/* comment manage */}
                 <Grid item container>
                   <Grid item>
-                    <PinkButton
-                      onClick={() => this.handleCommentManageButtonClick()}
-                    >
-                      评论管理
-                  </PinkButton>
+                    <Link to={`/content-manage/comment/${String(article.article_id)}`} className={classes.link}>
+                      <PinkButton
+                        onClick={() => this.handleCommentManageButtonClick()}
+                      >
+                        评论管理
+                      </PinkButton>
+                    </Link>
                   </Grid>
                 </Grid>
 

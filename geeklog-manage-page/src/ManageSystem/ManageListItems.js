@@ -166,7 +166,7 @@ class ManageListItems extends Component {
         {/* article manage list item */}
         <Link
           className={classes.link}
-          to="/article-manage">
+          to="/content-manage/article">
           <ListItem
             selected={this.state.selectedIndex === 5}
             onClick={e => this.handleListItemClick(e, 5)}

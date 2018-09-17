@@ -114,7 +114,6 @@ class ArticlePagination extends React.Component {
     super(props)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios.defaults.timeout = 3000;
     axios.defaults.baseURL = 'http://47.106.158.254/';
   }
 
