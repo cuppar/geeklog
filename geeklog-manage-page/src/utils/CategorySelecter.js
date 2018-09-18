@@ -9,8 +9,6 @@ import axios from 'axios';
 
 const styles = theme => ({
   root: {
-    // display: 'flex',
-    // flexWrap: 'wrap',
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -26,8 +24,43 @@ class CategorySelecter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // categoryId: props.categoryId ? String(props.categoryId) : '',
-      categorys: null,
+      categorys: [
+        {
+          "category_id": 1,
+          "name": "前端开发",
+          "description": "这是前端"
+        },
+        {
+          "category_id": 2,
+          "name": "后端开发",
+          "description": "这是后端"
+        },
+        {
+          "category_id": 3,
+          "name": "运维",
+          "description": "这是运维"
+        },
+        {
+          "category_id": 4,
+          "name": "测试",
+          "description": "这是测试"
+        },
+        {
+          "category_id": 5,
+          "name": "机器学习",
+          "description": "这是机器学习"
+        },
+        {
+          "category_id": 6,
+          "name": "大数据",
+          "description": "这是大数据"
+        },
+        {
+          "category_id": 7,
+          "name": "深度学习",
+          "description": "这是深度学习"
+        },
+      ]
     }
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -54,10 +87,8 @@ class CategorySelecter extends Component {
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
           this.setState({
-            // categoryId: String(res.data.data[0].category_id),
             categorys: res.data.data,
           });
-          // this.props.onChangeArticleCategory(this.state.categoryId);
           console.log('res.data.data[0].categoryId: ' + res.data.data[0].category_id)
           this.props.onChangeArticleCategory(String(res.data.data[0].category_id));
         } else {

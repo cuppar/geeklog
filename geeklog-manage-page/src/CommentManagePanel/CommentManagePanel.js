@@ -5,7 +5,6 @@ import {
   withStyles,
   createMuiTheme,
   MuiThemeProvider,
-  Paper,
 } from '@material-ui/core'
 import classNames from 'classnames'
 import axios from 'axios'
@@ -64,22 +63,22 @@ class ArticleManagePanel extends Component {
 
   componentDidMount = () => {
     this.getRows(this.props.match.params.article_id, this.state.page, this.state.rowsPerPage)
-    axios.get(`/articles/${this.props.match.params.article_id}`)
+    axios.get(`/admin/articles/${this.props.match.params.article_id}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
           this.setState({
             article: res.data.data,
           })
         } else if (res.data) {
-          console.log(`Fail: get /articles/${this.props.match.params.article_id}`)
+          console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
           console.log(res.data.code + ': ' + res.data.message)
         } else {
-          console.log(`Fail: get /articles/${this.props.match.params.article_id}`)
+          console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
           console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: get /articles/${this.props.match.params.article_id}`)
+        console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
         console.log(err)
       })
   }
@@ -121,22 +120,21 @@ class ArticleManagePanel extends Component {
           })
 
         } else if (res.data) {
-          console.log(`Fail: get /articles/${this.props.match.params.article_id}`)
+          console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
           console.log(res.data.code + ': ' + res.data.message)
         } else {
-          console.log(`Fail: get /articles/${this.props.match.params.article_id}`)
+          console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
           console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: get /articles/${this.props.match.params.article_id}`)
+        console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
         console.log(err)
       })
   }
 
   render() {
-    const { classes, token, match } = this.props;
-    // const { article_id: articleId } = match.params;
+    const { classes, token } = this.props;
     const { article, total, page, rowsPerPage, commentAndAuthors } = this.state;
 
     return (

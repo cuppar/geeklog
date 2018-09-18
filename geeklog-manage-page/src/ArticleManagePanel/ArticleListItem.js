@@ -81,11 +81,6 @@ class UserListItem extends Component {
     return hexColor;
   }
 
-  // res the comment manage button click
-  handleCommentManageButtonClick = () => {
-
-  }
-
   // res the delete article button click
   handleDeleteArticleButtonClick = () => {
     this.setState({
@@ -283,9 +278,7 @@ class UserListItem extends Component {
                 <Grid item container>
                   <Grid item>
                     <Link to={`/content-manage/comment/${String(article.article_id)}`} className={classes.link}>
-                      <PinkButton
-                        onClick={() => this.handleCommentManageButtonClick()}
-                      >
+                      <PinkButton>
                         评论管理
                       </PinkButton>
                     </Link>

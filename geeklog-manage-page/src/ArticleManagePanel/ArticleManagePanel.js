@@ -11,7 +11,6 @@ import classNames from 'classnames'
 import ArticlePagination from './ArticlePagination'
 import CategorySelecter from '../utils/CategorySelecter'
 import axios from 'axios'
-import { Route } from 'react-router-dom'
 
 
 const styles = theme => ({

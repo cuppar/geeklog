@@ -17,7 +17,7 @@ GET http://47.106.158.254/users/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
 
 ###
-GET http://47.106.158.254/admin/articles?category_id=7&page=1&size=30
+GET http://47.106.158.254/admin/articles?category_id=1&page=1&size=30
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
 
 ###
@@ -71,11 +71,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsI
 ### 
 GET http://47.106.158.254/articles/5 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
-
 ###
 post http://47.106.158.254/admin/login
+# content-type: application/json
+
 
 {
       "username": "a123456",
       "password": "123456",
 }
+
+###
+GET http://47.106.158.254/admin/authorities HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E
+
+###
+GET http://47.106.158.254/admin/categories HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc19hZG1pbiI6dHJ1ZSwic3ViIjoiMSIsInVzZXJfaWQiOjEsIm5pY2tuYW1lIjoi5bCP5ZWKIiwiYXZhdGFyIjpudWxsLCJleHAiOjE1Mzc0MDQ1NDYsImlhdCI6MTUzNjc5OTc0NiwianRpIjoiMjRmNGM3ZTctMTZlMS00ZjAyLWEyZTktYThhZjhkMjk3NjFiIiwidXNlcm5hbWUiOiJhMTIzNDU2In0.bPs9nQJMIY5eZTUYdEuBfLa1rpllRIwCfuhy8rlJi8E

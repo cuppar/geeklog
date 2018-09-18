@@ -122,6 +122,8 @@ class UserPagination extends React.Component {
     page: 0,
     rowsPerPage: 5,
     rows: [],
+    writeArticleAuthId: null,
+    commentAuthId: null,
   };
 
   handleGetRows = (page, rowsPerPage) => {
@@ -155,6 +157,29 @@ class UserPagination extends React.Component {
 
   componentDidMount = () => {
     this.handleGetRows(this.state.page, this.state.rowsPerPage)
+    axios.get('/admin/authorities')
+      .then(res => {
+        if (res.data && res.data.code === 200 && res.data.data) {
+          res.data.data.forEach(auth => {
+            if (auth.name === 'can_write_article') {
+              this.setState({
+                writeArticleAuthId: auth.authority_id,
+              })
+            } else if (auth.name === 'can_comment') {
+              this.setState({
+                commentAuthId: auth.authority_id,
+              })
+            }
+          })
+        } else {
+          console.log('get /admin/authorities fail')
+          console.log(res)
+        }
+      })
+      .catch(err => {
+        console.log('get /admin/authorities fail')
+        console.log(err)
+      })
   }
 
   handleChangePage = (event, page) => {
@@ -165,10 +190,10 @@ class UserPagination extends React.Component {
     this.handleGetRows(0, event.target.value)
   };
 
+
   render() {
     const { classes, token } = this.props;
-    const { rows, rowsPerPage, page, total } = this.state;
-    // const emptyRows = rows ? rowsPerPage - rows.length : rowsPerPage;
+    const { rows, rowsPerPage, page, total, writeArticleAuthId, commentAuthId } = this.state;
 
     return (
       <Paper className={classes.root}>
@@ -182,6 +207,8 @@ class UserPagination extends React.Component {
                       <UserListItem
                         user={row}
                         token={token}
+                        writeArticleAuthId={String(writeArticleAuthId)}
+                        commentAuthId={String(commentAuthId)}
                       />
                     </TableCell>
                   </TableRow>
@@ -194,13 +221,6 @@ class UserPagination extends React.Component {
                   </TableCell>
                 </TableRow>
               }
-              
-              {/* empty rows */}
-              {/* {emptyRows > 0 && (
-                <TableRow style={{ height: 160 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )} */}
 
             </TableBody>
             <TableFooter>

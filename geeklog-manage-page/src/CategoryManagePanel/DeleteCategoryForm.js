@@ -39,7 +39,7 @@ class AddCategoryForm extends Component {
         if (res.data && res.data.code === 200 && res.data.data) {
           this.props.onChangeMessage(`${res.data.message}`)
         } else if (res.data) {
-          this.props.onChangeMessage(res.data.code + ': ' + res.data.message)
+          this.props.onChangeMessage(res.data.message)
         } else {
           console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
           console.log(res)
@@ -57,8 +57,6 @@ class AddCategoryForm extends Component {
   }
 
   render() {
-    // const { classes } = this.props;
-
     return (
       <div>
         <Grid

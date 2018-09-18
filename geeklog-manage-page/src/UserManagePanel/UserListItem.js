@@ -54,13 +54,13 @@ class UserListItem extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     token: PropTypes.string.isRequired,
+    writeArticleAuthId: PropTypes.string.isRequired,
+    commentAuthId: PropTypes.string.isRequired,
   }
 
   state = {
     user: this.props.user,
     authResMsg: null, // response of ajax post forbidden
-    writeArticleAuthId: null,
-    commentAuthId: null,
   }
 
   randomColor = () => {
@@ -73,38 +73,12 @@ class UserListItem extends Component {
     return hexColor;
   }
 
-  componentDidMount = () => {
-    axios.get('/admin/authorities')
-      .then(res => {
-        if (res.data && res.data.code === 200 && res.data.data) {
-          res.data.data.forEach(auth => {
-            if (auth.name === 'can_write_article') {
-              this.setState({
-                writeArticleAuthId: auth.authority_id,
-              })
-            } else if (auth.name === 'can_comment') {
-              this.setState({
-                commentAuthId: auth.authority_id,
-              })
-            }
-          })
-        } else {
-          console.log('get /admin/authorities fail')
-          console.log(res)
-        }
-      })
-      .catch(err => {
-        console.log('get /admin/authorities fail')
-        console.log(err)
-      })
-  }
-
   handleForbidden = (authName, authId) => {
     this.setState({
       authResMsg: null,
     });
     axios.post('/admin/forbiddens', {
-      "user_id": this.state.user.user_id,
+      "user_id": this.props.user.user_id,
       "authority_id": authId,
     })
       .then(res => {
@@ -146,7 +120,7 @@ class UserListItem extends Component {
     axios.delete(`/admin/forbiddens/${this.state.user.user_id}/${authId}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
-          let new_user = Object.assign({}, this.state.user, { [authName]: true })
+          let new_user = Object.assign({}, this.props.user, { [authName]: true })
           this.setState({
             authResMsg: res.data.message,
             user: new_user,
@@ -176,13 +150,14 @@ class UserListItem extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, writeArticleAuthId, commentAuthId } = this.props;
+    const { authResMsg, user } = this.state;
 
-    let avatar = this.state.user.avatar ?
+    let avatar = user.avatar ?
       <Avatar
         className={classes.avatar}
-        alt={this.state.user.nickname}
-        src={this.state.user.avatar}></Avatar>
+        alt={user.nickname}
+        src={user.avatar}></Avatar>
       :
       <Avatar
         className={classes.avatar}
@@ -191,15 +166,15 @@ class UserListItem extends Component {
           color: this.randomColor(),
         }}
       >
-        {this.state.user.nickname[1].toUpperCase()}
+        {user.nickname[1].toUpperCase()}
       </Avatar>
 
 
-    let articleAuthorityButton = this.state.user['can_write_article'] ?
+    let articleAuthorityButton = user['can_write_article'] ?
       <DangerButton
         onClick={() => this.handleForbidden(
           'can_write_article',
-          this.state.writeArticleAuthId
+          writeArticleAuthId
         )
         }>
         禁止
@@ -208,35 +183,35 @@ class UserListItem extends Component {
       <PrimaryButton
         onClick={() => this.handleAllow(
           'can_write_article',
-          this.state.writeArticleAuthId
+          writeArticleAuthId
         )}>
         允许
       </PrimaryButton>;
 
-    let commentAuthorityButton = this.state.user['can_comment'] ?
+    let commentAuthorityButton = user['can_comment'] ?
       <DangerButton
         onClick={() => this.handleForbidden(
           'can_comment',
-          this.state.commentAuthId)}>
+          commentAuthId)}>
         禁止
       </DangerButton>
       :
       <PrimaryButton
         onClick={() => this.handleAllow(
           'can_comment',
-          this.state.commentAuthId
+          commentAuthId
         )}>
         允许
       </PrimaryButton>;
 
-    let msgBar = this.state.authResMsg ? (
+    let msgBar = authResMsg ? (
       <Paper className={classes.paper}>
         <Typography
           color="primary"
           variant="body1"
           className={classes.bold}
         >
-          {this.state.authResMsg}
+          {authResMsg}
         </Typography>
       </Paper>
     )
@@ -267,7 +242,7 @@ class UserListItem extends Component {
                     color="primary"
                     className={classes.bold}
                   >
-                    {this.state.user.nickname}
+                    {user.nickname}
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -276,7 +251,7 @@ class UserListItem extends Component {
                     color="secondary"
                     className={classes.bold}
                   >
-                    {`用户名: ${this.state.user.username}`}
+                    {`用户名: ${user.username}`}
                   </Typography>
                 </Grid>
               </Grid>

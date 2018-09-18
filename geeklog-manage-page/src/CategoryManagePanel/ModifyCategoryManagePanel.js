@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {
-  // Typography,
   withStyles,
 } from '@material-ui/core'
-// import classNames from 'classnames'
 import ModifyCategoryForm from './ModifyCategoryForm'
 import TitleBar from '../utils/TitleBar'
 import MsgBar from '../utils/MsgBar'
