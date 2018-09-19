@@ -31,6 +31,12 @@ class AddCategoryForm extends Component {
     categoryId: PropTypes.string.isRequired,
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
 
   handleClickDeleteButton = () => {
     axios.delete(`/admin/categories/${this.props.categoryId}`)

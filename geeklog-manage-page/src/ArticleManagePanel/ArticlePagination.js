@@ -117,6 +117,12 @@ class ArticlePagination extends React.Component {
     axios.defaults.baseURL = 'http://47.106.158.254/';
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
   handleChangePage = (event, page) => {
     this.props.onChangePage(event, page)
   };

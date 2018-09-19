@@ -45,6 +45,11 @@ class ArticleManagePanel extends Component {
     articleAndAuthors: null,
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
 
   // change the article category
   handleChangeArticleCategory = (categoryId) => {
@@ -121,7 +126,6 @@ class ArticleManagePanel extends Component {
         console.log(err)
       })
   }
-
 
   render() {
     const { classes, token } = this.props;

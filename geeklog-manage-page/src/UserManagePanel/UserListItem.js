@@ -78,7 +78,7 @@ class UserListItem extends Component {
       authResMsg: null,
     });
     axios.post('/admin/forbiddens', {
-      "user_id": this.props.user.user_id,
+      "user_id": this.state.user.user_id,
       "authority_id": authId,
     })
       .then(res => {
@@ -120,12 +120,13 @@ class UserListItem extends Component {
     axios.delete(`/admin/forbiddens/${this.state.user.user_id}/${authId}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
-          let new_user = Object.assign({}, this.props.user, { [authName]: true })
+          let new_user = Object.assign({}, this.state.user, { [authName]: true })
           this.setState({
             authResMsg: res.data.message,
             user: new_user,
           });
         } else if (res.data) {
+          console.log(res.data)
           this.setState({
             authResMsg: res.data.code + ': ' + res.data.message,
           });
@@ -147,6 +148,12 @@ class UserListItem extends Component {
           console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
         }
       })
+  }
+
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
   }
 
   render() {

@@ -41,10 +41,10 @@ class ArticleManagePanel extends Component {
     commentAndAuthors: [],
     article: {
       "article_id": 1,
-      "title": "a title",
+      "title": "文章标题",
       "created_at": 12211033,
       "modified_at": 16125652,
-      "content": "some content",
+      "content": "文章内容",
       "user_id": 1,
       "category_id": 2,
       "tags": "java,python,sql",
@@ -61,7 +61,8 @@ class ArticleManagePanel extends Component {
     this.getRows(this.props.match.params.article_id, this.state.page, rowsPerPage)
   }
 
-  componentDidMount = () => {
+
+  componentWillMount = () => {
     this.getRows(this.props.match.params.article_id, this.state.page, this.state.rowsPerPage)
     axios.get(`/admin/articles/${this.props.match.params.article_id}`)
       .then(res => {
@@ -81,6 +82,12 @@ class ArticleManagePanel extends Component {
         console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
         console.log(err)
       })
+  }
+
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
   }
 
   getRows = (articleId, page, rowsPerPage) => {

@@ -67,6 +67,12 @@ class LoginDialog extends React.Component {
       });
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
   render() {
     const { classes } = this.props;
 

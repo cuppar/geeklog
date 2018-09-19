@@ -26,6 +26,12 @@ export default class CommentListItem extends Component {
     resMsg: '',
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
   handleClick = () => {
     axios.delete(`/admin/comments/${this.props.comment.comment_id}`)
       .then(res => {

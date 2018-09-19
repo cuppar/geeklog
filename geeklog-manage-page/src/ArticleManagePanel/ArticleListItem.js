@@ -81,6 +81,12 @@ class UserListItem extends Component {
     return hexColor;
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
   // res the delete article button click
   handleDeleteArticleButtonClick = () => {
     this.setState({

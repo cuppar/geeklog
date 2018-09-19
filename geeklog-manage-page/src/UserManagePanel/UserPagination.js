@@ -126,6 +126,12 @@ class UserPagination extends React.Component {
     commentAuthId: null,
   };
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
   handleGetRows = (page, rowsPerPage) => {
     this.setState({
       rows: [],
@@ -155,7 +161,8 @@ class UserPagination extends React.Component {
       })
   }
 
-  componentDidMount = () => {
+
+  componentWillMount = () => {
     this.handleGetRows(this.state.page, this.state.rowsPerPage)
     axios.get('/admin/authorities')
       .then(res => {

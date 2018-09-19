@@ -35,6 +35,12 @@ class AddCategoryForm extends Component {
     categoryDescription: '',
   }
 
+  componentWillUnmount = () => {
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
+    source.cancel()
+  }
+
   handleChangeName = (e) => {
     this.setState({
       categoryName: e.target.value,
