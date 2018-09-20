@@ -85,7 +85,7 @@ class ArticleManagePanel extends Component {
       `/admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
-          console.log(res)
+          // console.log(res)
           res.data.data.entities.forEach(article => {
             axios.get(`/users/${article.user_id}`)
               .then(res => {
@@ -97,13 +97,13 @@ class ArticleManagePanel extends Component {
                     })
                   }))
                 } else {
-                  console.log(`Fail: GET /users/${article.user_id}`)
-                  console.log(res.data)
+                  // console.log(`Fail: GET /users/${article.user_id}`)
+                  // console.log(res.data)
                 }
               })
               .catch(err => {
-                console.log(`Fail: GET /users/${article.user_id}`)
-                console.log(err)
+                // console.log(`Fail: GET /users/${article.user_id}`)
+                // console.log(err)
               })
           });
           this.setState({
@@ -113,24 +113,24 @@ class ArticleManagePanel extends Component {
             rowsPerPage: rowsPerPage,
           })
         } else if (res.data) {
-          console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-          console.log(res.data.message)
-          console.log(res)
+          // console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+          // console.log(res.data.message)
+          // console.log(res)
         } else {
-          console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-          console.log(res)
+          // console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
-        console.log(err)
+        // console.log(`Fail: GET /admin/articles?category_id=${categoryId}&page=${page + 1}&size=${rowsPerPage}`)
+        // console.log(err)
       })
   }
 
   render() {
     const { classes, token } = this.props;
     const { categoryId, total, page, rowsPerPage, articleAndAuthors } = this.state;
-    console.log('categoryId in ArticleManagePanel: ' + categoryId)
+    // console.log('categoryId in ArticleManagePanel: ' + categoryId)
 
     let articleList = categoryId !== ''
       ?

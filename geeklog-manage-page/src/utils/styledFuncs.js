@@ -35,4 +35,4 @@ function styled(Component) {
   };
 }
 
-export {createStyled, styled};
+export { createStyled, styled };

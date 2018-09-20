@@ -139,7 +139,7 @@ class UserPagination extends React.Component {
     axios.get(`/admin/users?page=${page + 1}&size=${rowsPerPage}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
-          console.log(res)
+          // console.log(res)
           this.setState({
             page: page,
             rowsPerPage: rowsPerPage,
@@ -147,22 +147,22 @@ class UserPagination extends React.Component {
             rows: res.data.data.entities,
           })
         } else if (res.data) {
-          console.log('Fail: GET /admin/users?page=1&size=20')
-          console.log(res.data.message)
-          console.log(res)
+          // console.log('Fail: GET /admin/users?page=1&size=20')
+          // console.log(res.data.message)
+          // console.log(res)
         } else {
-          console.log('Fail: GET /admin/users?page=1&size=20')
-          console.log(res)
+          // console.log('Fail: GET /admin/users?page=1&size=20')
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log('Fail: GET /admin/users?page=1&size=20')
-        console.log(err)
+        // console.log('Fail: GET /admin/users?page=1&size=20')
+        // console.log(err)
       })
   }
 
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.handleGetRows(this.state.page, this.state.rowsPerPage)
     axios.get('/admin/authorities')
       .then(res => {
@@ -179,13 +179,13 @@ class UserPagination extends React.Component {
             }
           })
         } else {
-          console.log('get /admin/authorities fail')
-          console.log(res)
+          // console.log('get /admin/authorities fail')
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log('get /admin/authorities fail')
-        console.log(err)
+        // console.log('get /admin/authorities fail')
+        // console.log(err)
       })
   }
 

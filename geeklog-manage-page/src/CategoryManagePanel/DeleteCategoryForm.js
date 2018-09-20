@@ -41,23 +41,23 @@ class AddCategoryForm extends Component {
   handleClickDeleteButton = () => {
     axios.delete(`/admin/categories/${this.props.categoryId}`)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.data && res.data.code === 200 && res.data.data) {
           this.props.onChangeMessage(`${res.data.message}`)
         } else if (res.data) {
           this.props.onChangeMessage(res.data.message)
         } else {
-          console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
-          console.log(res)
+          // console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
+          // console.log(res)
         }
       })
       .catch(err => {
         if (err.data) {
           this.props.onChangeMessage(err.toString())
-          console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
+          // console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
         } else {
           this.props.onChangeMessage(err.toString())
-          console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
+          // console.log(`Fail: delete /admin/categories/${this.props.categoryId}`)
         }
       })
   }

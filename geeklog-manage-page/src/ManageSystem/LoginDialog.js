@@ -49,7 +49,7 @@ class LoginDialog extends React.Component {
       "password": this.state.password,
     })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.data.code === 200 && res.data.data) {
           this.props.onLogin(this.state.username, res.data.data.token);
           this.props.onLoginMessage(`管理员: ${this.state.username}, 欢迎!`)
@@ -58,12 +58,12 @@ class LoginDialog extends React.Component {
         else {
           this.props.onLoginMessage(res.data.message)
           this.props.onLoginDialogClose();
-          console.log('Error: login fail, ' + res.data.message)
+          // console.log('Error: login fail, ' + res.data.message)
         }
       })
       .catch(err => {
         this.props.onLoginDialogClose();
-        console.log(err)
+        // console.log(err)
       });
   }
 

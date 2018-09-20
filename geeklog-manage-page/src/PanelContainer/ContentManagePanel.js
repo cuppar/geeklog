@@ -27,7 +27,8 @@ class PanelContainer extends Component {
           path="/content-manage/article"
           render={props => (
             <ArticleManagePanel
-              token={this.props.token} />
+              token={this.props.token}
+              {...props} />
           )}></Route>
         <Route
           path="/content-manage/comment/:article_id"

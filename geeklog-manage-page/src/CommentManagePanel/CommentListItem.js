@@ -41,19 +41,19 @@ export default class CommentListItem extends Component {
             resMsg: res.data.message,
           })
         } else if (res.data) {
-          console.log(`Fail: delete /admin/comments/${this.props.comment.comment_id}`)
-          console.log(res.data.code + ': ' + res.data.message)
+          // console.log(`Fail: delete /admin/comments/${this.props.comment.comment_id}`)
+          // console.log(res.data.code + ': ' + res.data.message)
           this.setState({
             resMsg: res.data.message,
           })
         } else {
-          console.log(`Fail: delete /admin/comments/${this.props.comment.comment_id}`)
-          console.log(res)
+          // console.log(`Fail: delete /admin/comments/${this.props.comment.comment_id}`)
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: delete /admin/comments/${this.props.comment.comment_id}`)
-        console.log(err)
+        // console.log(`Fail: delete /admin/comments/${this.props.comment.comment_id}`)
+        // console.log(err)
       })
   }
 

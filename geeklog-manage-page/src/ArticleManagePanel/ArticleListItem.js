@@ -105,7 +105,7 @@ class UserListItem extends Component {
   handleConfirmedDeleteArticle = () => {
     axios.delete(`/admin/articles/${this.props.article.article_id}`)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.data && res.data.code === 200 && res.data.data) {
           this.setState(preState => ({
             resMsg: `删除${this.props.article.title}: ${res.data.message}`,
@@ -116,9 +116,9 @@ class UserListItem extends Component {
             resMsg: res.data.code + ': ' + res.data.message,
           });
         } else {
-          console.log(
-            `Fail: delete /admin/articles/${this.props.article.article_id}`)
-          console.log(res)
+          // console.log(
+          //   `Fail: delete /admin/articles/${this.props.article.article_id}`)
+          // console.log(res)
         }
       })
       .catch(err => {
@@ -126,14 +126,14 @@ class UserListItem extends Component {
           this.setState({
             resMsg: err.toString(),
           });
-          console.log(
-            `Fail: delete /admin/articles/${this.props.article.article_id}`)
+          // console.log(
+          // `Fail: delete /admin/articles/${this.props.article.article_id}`)
         } else {
           this.setState({
             resMsg: err.toString(),
           });
-          console.log(
-            `Fail: delete /admin/articles/${this.props.article.article_id}`)
+          // console.log(
+          // `Fail: delete /admin/articles/${this.props.article.article_id}`)
         }
       })
     this.handleConfirmDeleteDialogClose()

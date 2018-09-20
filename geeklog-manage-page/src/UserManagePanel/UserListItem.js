@@ -78,11 +78,11 @@ class UserListItem extends Component {
       authResMsg: null,
     });
     axios.post('/admin/forbiddens', {
-      "user_id": this.state.user.user_id,
+      "user_id": this.props.user.user_id,
       "authority_id": authId,
     })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         let new_user = Object.assign({}, this.state.user, { [authName]: false });
         if (res.data && res.data.code === 200 && res.data.data) {
           this.setState(preState => ({
@@ -94,8 +94,8 @@ class UserListItem extends Component {
             authResMsg: res.data.code + ': ' + res.data.message,
           });
         } else {
-          console.log('Fail: post /admin/forbiddens ')
-          console.log(res)
+          // console.log('Fail: post /admin/forbiddens ')
+          // console.log(res)
         }
       })
       .catch(err => {
@@ -103,12 +103,12 @@ class UserListItem extends Component {
           this.setState({
             authResMsg: err.toString(),
           });
-          console.log('Fail: post /admin/forbiddens ')
+          // console.log('Fail: post /admin/forbiddens ')
         } else {
           this.setState({
             authResMsg: err.toString(),
           });
-          console.log('Fail: post /admin/forbiddens ')
+          // console.log('Fail: post /admin/forbiddens ')
         }
       })
   }
@@ -117,7 +117,7 @@ class UserListItem extends Component {
     this.setState({
       authResMsg: null,
     });
-    axios.delete(`/admin/forbiddens/${this.state.user.user_id}/${authId}`)
+    axios.delete(`/admin/forbiddens/${this.props.user.user_id}/${authId}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
           let new_user = Object.assign({}, this.state.user, { [authName]: true })
@@ -126,13 +126,13 @@ class UserListItem extends Component {
             user: new_user,
           });
         } else if (res.data) {
-          console.log(res.data)
+          // console.log(res.data)
           this.setState({
             authResMsg: res.data.code + ': ' + res.data.message,
           });
         } else {
-          console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
-          console.log(res)
+          // console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
+          // console.log(res)
         }
       })
       .catch(err => {
@@ -140,12 +140,12 @@ class UserListItem extends Component {
           this.setState({
             authResMsg: err.toString(),
           });
-          console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
+          // console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
         } else {
           this.setState({
             authResMsg: err.toString(),
           });
-          console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
+          // console.log('Fail: delete /admin/forbiddens/:user_id/:authority_id ')
         }
       })
   }

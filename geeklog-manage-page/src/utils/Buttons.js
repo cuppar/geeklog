@@ -1,7 +1,7 @@
 import {
   styled,
 } from './styledFuncs'
-import {Button} from '@material-ui/core'
+import { Button } from '@material-ui/core'
 
 const PrimaryButton = styled(Button)({
   backgroundColor: '#255AB1',

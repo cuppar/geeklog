@@ -71,16 +71,16 @@ class ArticleManagePanel extends Component {
             article: res.data.data,
           })
         } else if (res.data) {
-          console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
-          console.log(res.data.code + ': ' + res.data.message)
+          // console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
+          // console.log(res.data.code + ': ' + res.data.message)
         } else {
-          console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
-          console.log(res)
+          // console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
-        console.log(err)
+        // console.log(`Fail: get /admin/articles/${this.props.match.params.article_id}`)
+        // console.log(err)
       })
   }
 
@@ -94,7 +94,7 @@ class ArticleManagePanel extends Component {
     this.setState({
       commentAndAuthors: [],
     })
-    axios.get(`/admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
+    axios.get(`/admin/comments?article_id=${articleId}&page=${Number(page) + 1}&size=${rowsPerPage}`)
       .then(res => {
         if (res.data && res.data.code === 200 && res.data.data) {
           this.setState({
@@ -113,30 +113,30 @@ class ArticleManagePanel extends Component {
                     }),
                   }))
                 } else if (res.data) {
-                  console.log(`Fail: get /users/${comment.user_id}`)
-                  console.log(res.data.code + ': ' + res.data.message)
+                  // console.log(`Fail: get /users/${comment.user_id}`)
+                  // console.log(res.data.code + ': ' + res.data.message)
                 } else {
-                  console.log(`Fail: get /users/${comment.user_id}`)
-                  console.log(res)
+                  // console.log(`Fail: get /users/${comment.user_id}`)
+                  // console.log(res)
                 }
               })
               .catch(err => {
-                console.log(`Fail: get /users/${comment.user_id}`)
-                console.log(err)
+                // console.log(`Fail: get /users/${comment.user_id}`)
+                // console.log(err)
               })
           })
 
         } else if (res.data) {
-          console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
-          console.log(res.data.code + ': ' + res.data.message)
+          // console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
+          // console.log(res.data.code + ': ' + res.data.message)
         } else {
-          console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
-          console.log(res)
+          // console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
-        console.log(err)
+        // console.log(`Fail: get /admin/comments?article_id=${articleId}&page=${Number(page)+1}&size=${rowsPerPage}`)
+        // console.log(err)
       })
   }
 

@@ -66,7 +66,7 @@ class CategorySelecter extends Component {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + props.token;
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.defaults.baseURL = 'http://47.106.158.254/';
-    
+
   }
 
   static propTypes = {
@@ -78,30 +78,10 @@ class CategorySelecter extends Component {
 
 
   handleChangeSelectedArticleCategory = event => {
-    console.log('event.target.value: ' + event.target.value)
-    console.log('event.target' + event.target.toString())
+    // console.log('event.target.value: ' + event.target.value)
+    // console.log('event.target' + event.target.toString())
     this.props.onChangeArticleCategory(String(event.target.value))
   }
-
-  // componentDidMount = () => {
-  //   axios.get('/admin/categories')
-  //     .then(res => {
-  //       if (res.data && res.data.code === 200 && res.data.data) {
-  //         this.setState({
-  //           categorys: res.data.data,
-  //         });
-  //         console.log('res.data.data[0].categoryId: ' + res.data.data[0].category_id)
-  //         this.props.onChangeArticleCategory(String(res.data.data[0].category_id));
-  //       } else {
-  //         console.log(`Fail: GET /admin/categories`)
-  //         console.log(res)
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log(`Fail: GET /admin/categories`)
-  //       console.log(err)
-  //     })
-  // }
 
   componentWillMount = () => {
     axios.get('/admin/categories')
@@ -110,16 +90,16 @@ class CategorySelecter extends Component {
           this.setState({
             categorys: res.data.data,
           });
-          console.log('res.data.data[0].categoryId: ' + res.data.data[0].category_id)
-          this.props.onChangeArticleCategory(String(res.data.data[0].category_id));
+          // console.log('res.data.data[0].categoryId: ' + res.data.data[0].category_id)
+          // this.props.onChangeArticleCategory(String(res.data.data[0].category_id));
         } else {
-          console.log(`Fail: GET /admin/categories`)
-          console.log(res)
+          // console.log(`Fail: GET /admin/categories`)
+          // console.log(res)
         }
       })
       .catch(err => {
-        console.log(`Fail: GET /admin/categories`)
-        console.log(err)
+        // console.log(`Fail: GET /admin/categories`)
+        // console.log(err)
       })
   }
 
@@ -132,7 +112,7 @@ class CategorySelecter extends Component {
   render() {
     const { categorys } = this.state;
     const { classes, categoryId } = this.props;
-    console.log('categoryId in selecter: ' + categoryId)
+    // console.log('categoryId in selecter: ' + categoryId)
 
     return (
       <div>

@@ -60,23 +60,23 @@ class ModifyCategoryForm extends Component {
       "description": this.state.categoryDescription,
     })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.data && res.data.code === 200 && res.data.data) {
           this.props.onChangeMessage(`${res.data.message}: ${this.state.categoryName}`)
         } else if (res.data) {
           this.props.onChangeMessage(res.data.code + ': ' + res.data.message)
         } else {
-          console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
-          console.log(res)
+          // console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
+          // console.log(res)
         }
       })
       .catch(err => {
         if (err.data) {
           this.props.onChangeMessage(err.toString())
-          console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
+          // console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
         } else {
           this.props.onChangeMessage(err.toString())
-          console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
+          // console.log(`Fail: post /admin/categories/${this.props.categoryId}`)
         }
       })
   }
