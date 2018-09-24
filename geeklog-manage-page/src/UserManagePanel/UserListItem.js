@@ -173,7 +173,7 @@ class UserListItem extends Component {
           color: this.randomColor(),
         }}
       >
-        {user.nickname[1].toUpperCase()}
+        {user.nickname[1] ? user.nickname[1].toUpperCase() : 'U'}
       </Avatar>
 
 
